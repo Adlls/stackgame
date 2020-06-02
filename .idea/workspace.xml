@@ -2,21 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2fb6ba03-800e-4149-a39c-e2ee4c05a570" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Application.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Army.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/exceptions/NotEnoughPrice.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/players/BaseUnit.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/players/impl/Infantry.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/players/impl/InfantryFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/players/impl/Knight.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/players/impl/KnightFactory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Army.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Army.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Demo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Demo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/IArmy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/IArmy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/IUnit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/players/IUnit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/IUnitFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/players/IUnitFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Demo.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,7 +75,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1590267139646</updated>
-      <workItem from="1590267144468" duration="11699000" />
+      <workItem from="1590267144468" duration="15791000" />
     </task>
     <servers />
   </component>
@@ -108,21 +97,33 @@
       <screen x="0" y="23" width="1280" height="734" />
     </state>
     <state x="410" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.23.1280.734@0.23.1280.734" timestamp="1590272086292" />
-    <state width="1238" height="183" key="GridCell.Tab.0.bottom" timestamp="1590269444862">
-      <screen x="0" y="23" width="1280" height="734" />
+    <state x="378" y="138" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog" timestamp="1591126567186">
+      <screen x="0" y="23" width="1280" height="730" />
     </state>
+    <state x="378" y="138" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog/0.23.1280.730@0.23.1280.730" timestamp="1591126567186" />
+    <state width="1238" height="192" key="GridCell.Tab.0.bottom" timestamp="1591128209911">
+      <screen x="0" y="23" width="1280" height="730" />
+    </state>
+    <state width="1238" height="192" key="GridCell.Tab.0.bottom/0.23.1280.730@0.23.1280.730" timestamp="1591128209911" />
+    <state width="1238" height="179" key="GridCell.Tab.0.bottom/0.23.1280.732@0.23.1280.732" timestamp="1591124518833" />
     <state width="1238" height="183" key="GridCell.Tab.0.bottom/0.23.1280.734@0.23.1280.734" timestamp="1590269444862" />
-    <state width="1238" height="183" key="GridCell.Tab.0.center" timestamp="1590269444860">
-      <screen x="0" y="23" width="1280" height="734" />
+    <state width="1238" height="192" key="GridCell.Tab.0.center" timestamp="1591128209910">
+      <screen x="0" y="23" width="1280" height="730" />
     </state>
+    <state width="1238" height="192" key="GridCell.Tab.0.center/0.23.1280.730@0.23.1280.730" timestamp="1591128209910" />
+    <state width="1238" height="179" key="GridCell.Tab.0.center/0.23.1280.732@0.23.1280.732" timestamp="1591124518832" />
     <state width="1238" height="183" key="GridCell.Tab.0.center/0.23.1280.734@0.23.1280.734" timestamp="1590269444860" />
-    <state width="1238" height="183" key="GridCell.Tab.0.left" timestamp="1590269444860">
-      <screen x="0" y="23" width="1280" height="734" />
+    <state width="1238" height="192" key="GridCell.Tab.0.left" timestamp="1591128209910">
+      <screen x="0" y="23" width="1280" height="730" />
     </state>
+    <state width="1238" height="192" key="GridCell.Tab.0.left/0.23.1280.730@0.23.1280.730" timestamp="1591128209910" />
+    <state width="1238" height="179" key="GridCell.Tab.0.left/0.23.1280.732@0.23.1280.732" timestamp="1591124518832" />
     <state width="1238" height="183" key="GridCell.Tab.0.left/0.23.1280.734@0.23.1280.734" timestamp="1590269444860" />
-    <state width="1238" height="183" key="GridCell.Tab.0.right" timestamp="1590269444861">
-      <screen x="0" y="23" width="1280" height="734" />
+    <state width="1238" height="192" key="GridCell.Tab.0.right" timestamp="1591128209911">
+      <screen x="0" y="23" width="1280" height="730" />
     </state>
+    <state width="1238" height="192" key="GridCell.Tab.0.right/0.23.1280.730@0.23.1280.730" timestamp="1591128209911" />
+    <state width="1238" height="179" key="GridCell.Tab.0.right/0.23.1280.732@0.23.1280.732" timestamp="1591124518833" />
     <state width="1238" height="183" key="GridCell.Tab.0.right/0.23.1280.734@0.23.1280.734" timestamp="1590269444861" />
     <state x="221" y="115" width="837" height="550" key="find.popup" timestamp="1590267260495">
       <screen x="0" y="23" width="1280" height="734" />

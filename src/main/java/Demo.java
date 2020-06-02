@@ -1,4 +1,7 @@
+import exceptions.NotEnoughPrice;
 import players.IUnitFactory;
+
+import java.lang.reflect.InvocationTargetException;
 
 public class Demo {
 
@@ -9,7 +12,9 @@ public class Demo {
         return null;
     }
 
-    public static void main(String[] args) {
-        System.out.println("Test");
+    public static void main(String[] args) throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException, NotEnoughPrice {
+        Army army = new Army();
+        army.createArmy(10000);
+
     }
 }
