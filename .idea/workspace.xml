@@ -1,7 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2fb6ba03-800e-4149-a39c-e2ee4c05a570" name="Default Changelist" comment="" />
+    <list default="true" id="2fb6ba03-800e-4149-a39c-e2ee4c05a570" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Application.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Army.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/exceptions/NotEnoughPrice.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/players/BaseUnit.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/players/impl/Infantry.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/players/impl/InfantryFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/players/impl/Knight.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/players/impl/KnightFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/IArmy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/IArmy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/IUnit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/players/IUnit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/IUnitFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/players/IUnitFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Demo.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -15,12 +31,16 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1cKAvDLE19jU23C9NMfMBmUoQSJ" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="autoscrollFromSource" value="true" />
     <option name="autoscrollToSource" value="true" />
@@ -30,15 +50,21 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="preferences.general" />
   </component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
+  </component>
   <component name="RunManager">
-    <configuration name="main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="main" />
+    <configuration name="Demo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Demo" />
       <module name="StackGame.main" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -46,7 +72,7 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.main" />
+        <item itemvalue="Application.Demo" />
       </list>
     </recent_temporary>
   </component>
@@ -60,17 +86,51 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1590267139646</updated>
-      <workItem from="1590267144468" duration="1551000" />
+      <workItem from="1590267144468" duration="11699000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+    <option name="exactExcludedFiles">
+      <list>
+        <option value="$USER_HOME$/Desktop/laba1/app.js" />
+      </list>
+    </option>
   </component>
   <component name="WindowStateProjectService">
+    <state x="461" y="100" key="#com.intellij.ide.util.MemberChooser" timestamp="1591113728250">
+      <screen x="0" y="23" width="1280" height="730" />
+    </state>
+    <state x="461" y="100" key="#com.intellij.ide.util.MemberChooser/0.23.1280.730@0.23.1280.730" timestamp="1591113728250" />
+    <state x="461" y="100" key="#com.intellij.ide.util.MemberChooser/0.23.1280.734@0.23.1280.734" timestamp="1590273650489" />
+    <state x="410" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1590272086292">
+      <screen x="0" y="23" width="1280" height="734" />
+    </state>
+    <state x="410" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.23.1280.734@0.23.1280.734" timestamp="1590272086292" />
+    <state width="1238" height="183" key="GridCell.Tab.0.bottom" timestamp="1590269444862">
+      <screen x="0" y="23" width="1280" height="734" />
+    </state>
+    <state width="1238" height="183" key="GridCell.Tab.0.bottom/0.23.1280.734@0.23.1280.734" timestamp="1590269444862" />
+    <state width="1238" height="183" key="GridCell.Tab.0.center" timestamp="1590269444860">
+      <screen x="0" y="23" width="1280" height="734" />
+    </state>
+    <state width="1238" height="183" key="GridCell.Tab.0.center/0.23.1280.734@0.23.1280.734" timestamp="1590269444860" />
+    <state width="1238" height="183" key="GridCell.Tab.0.left" timestamp="1590269444860">
+      <screen x="0" y="23" width="1280" height="734" />
+    </state>
+    <state width="1238" height="183" key="GridCell.Tab.0.left/0.23.1280.734@0.23.1280.734" timestamp="1590269444860" />
+    <state width="1238" height="183" key="GridCell.Tab.0.right" timestamp="1590269444861">
+      <screen x="0" y="23" width="1280" height="734" />
+    </state>
+    <state width="1238" height="183" key="GridCell.Tab.0.right/0.23.1280.734@0.23.1280.734" timestamp="1590269444861" />
     <state x="221" y="115" width="837" height="550" key="find.popup" timestamp="1590267260495">
       <screen x="0" y="23" width="1280" height="734" />
     </state>
     <state x="221" y="115" width="837" height="550" key="find.popup/0.23.1280.734@0.23.1280.734" timestamp="1590267260495" />
+    <state width="600" height="424" key="javadoc.popup" timestamp="1591110835547">
+      <screen x="0" y="23" width="1280" height="732" />
+    </state>
+    <state width="600" height="424" key="javadoc.popup/0.23.1280.732@0.23.1280.732" timestamp="1591110835547" />
   </component>
 </project>
