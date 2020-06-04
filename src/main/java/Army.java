@@ -1,30 +1,41 @@
-import exceptions.NotEnoughPrice;
+import exceptions.NotEnoughPriceException;
 import players.IUnit;
 import players.IUnitFactory;
 import java.io.File;
+import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Army implements IArmy {
 
+
     private List<IUnitFactory> currentUnits;
     public static final int minPrice = 50;
 
+    public Army() throws ClassNotFoundException, IllegalAccessException, InstantiationException, NoSuchMethodException, InvocationTargetException, IOException {
+        Logger.getLogger().writeClassInstanceLog(Army.class);
+        currentUnits = new ArrayList<>();
+        getCurrentUnits(scanPathFactoriesForCurrentUnits(currentUnits));
+    }
 
-    public Army() throws ClassNotFoundException, IllegalAccessException, InstantiationException, NoSuchMethodException, InvocationTargetException {
-        String getScanPath = System.getProperty("user.dir") + "/src/main/java/players/impl/";
+    private List<IUnitFactory> scanPathFactoriesForCurrentUnits(List<IUnitFactory> currentUnits) throws ClassNotFoundException, NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
+        String getScanPath = System.getProperty("user.dir") + "/src/main/java/players/impl/factories";
         String classname;
         File scanDirectory = new File(getScanPath);
-        currentUnits = new ArrayList<>();
         for (File item: scanDirectory.listFiles()) {
             classname = item.getName().substring(0, item.getName().indexOf("."));
             if (classname.toLowerCase().contains("factory"))
                 currentUnits.add((IUnitFactory)
-                        Class.forName("players.impl."+classname)
+                        Class.forName("players.impl.factories."+classname)
                                 .getDeclaredConstructor()
                                 .newInstance());
         }
+        return currentUnits;
+    }
+
+    private void getCurrentUnits(List<IUnitFactory> factories) {
+        currentUnits = factories;
     }
 
 
@@ -34,7 +45,7 @@ public class Army implements IArmy {
     }
 
     @Override
-    public List<IUnit> createArmy(int price) throws NotEnoughPrice {
+    public List<IUnit> createArmy(int price) throws NotEnoughPriceException {
         List<IUnit> army = new ArrayList<>();
         int sizeUnitFactory = currentUnits.size();
         int randomIndex;
@@ -43,7 +54,7 @@ public class Army implements IArmy {
             System.out.println(randomIndex);
             IUnit unit = currentUnits.get(randomIndex).createUnit(price);
             army.add(unit);
-            price -=  unit.getCost();
+            price -= unit.getCost();
         }
         return army;
     }

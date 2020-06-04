@@ -1,7 +1,7 @@
 package players;
 
-import exceptions.NotEnoughPrice;
+import exceptions.NotEnoughPriceException;
 
 public interface IUnitFactory {
-    IUnit createUnit(int maxPrice) throws NotEnoughPrice;
+    IUnit createUnit(int maxPrice) throws NotEnoughPriceException;
 }

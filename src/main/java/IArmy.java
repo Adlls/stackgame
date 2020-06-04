@@ -1,10 +1,9 @@
-import exceptions.NotEnoughPrice;
+import exceptions.NotEnoughPriceException;
 import players.IUnit;
-import players.IUnitFactory;
 
 import java.util.List;
 
 public interface IArmy {
     int getMinPrice();
-    List<IUnit> createArmy(int price) throws NotEnoughPrice;
+    List<IUnit> createArmy(int price) throws NotEnoughPriceException;
 }

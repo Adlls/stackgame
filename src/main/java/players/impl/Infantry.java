@@ -1,7 +1,6 @@
 package players.impl;
 
-import com.sun.jdi.event.ExceptionEvent;
-import exceptions.NotEnoughPrice;
+import exceptions.NotEnoughPriceException;
 import players.BaseUnit;
 import players.IUnit;
 
@@ -20,11 +19,11 @@ public class Infantry extends BaseUnit implements IUnit {
 
     }
 
-   public Infantry(int price) throws NotEnoughPrice {
+   public Infantry(int price) throws NotEnoughPriceException {
         super(price);
    }
 
-   public Infantry(double HP, double AD, double DF, int price) throws NotEnoughPrice {
+   public Infantry(double HP, double AD, double DF, int price) throws NotEnoughPriceException {
         super(price);
         this.AD = AD;
         this.DF = DF;
