@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2fb6ba03-800e-4149-a39c-e2ee4c05a570" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/logs/logClasses.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Logger.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/players/impl/factories/KnightFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/user/IUser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/fileHashes/fileHashes.bin" afterDir="false" />
@@ -16,27 +14,14 @@
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/Application.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Application.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/Army.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Army.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/Demo.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Demo.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/IArmy.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/IArmy.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/IGame.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/IGame.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/exceptions/NotEnoughPrice.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/players/BaseUnit.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/players/BaseUnit.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/players/IUnitFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/players/IUnitFactory.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/players/impl/Infantry.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/players/impl/Infantry.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/players/impl/InfantryFactory.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/players/impl/Knight.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/players/impl/Knight.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/players/impl/KnightFactory.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Logger.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Logger.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/logClasses.txt" beforeDir="false" afterPath="$PROJECT_DIR$/logs/logClasses.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Application.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Army.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Army.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Demo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Demo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/IArmy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/IArmy.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/IGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/IGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/exceptions/NotEnoughPrice.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/exceptions/NotEnoughPriceException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/players/BaseUnit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/players/BaseUnit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/players/IUnitFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/players/IUnitFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/players/impl/Infantry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/players/impl/Infantry.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/players/impl/InfantryFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/players/impl/factories/InfantryFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/players/impl/Knight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/players/impl/Knight.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/players/impl/KnightFactory.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Logger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Logger.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,8 +36,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -109,7 +94,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1590267139646</updated>
-      <workItem from="1590267144468" duration="22512000" />
+      <workItem from="1590267144468" duration="26797000" />
     </task>
     <servers />
   </component>
@@ -142,30 +127,46 @@
       <screen x="0" y="23" width="1280" height="730" />
     </state>
     <state x="378" y="138" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog/0.23.1280.730@0.23.1280.730" timestamp="1591126567186" />
-    <state width="1238" height="192" key="GridCell.Tab.0.bottom" timestamp="1591303253436">
+    <state width="1238" height="214" key="GridCell.Tab.0.bottom" timestamp="1591309651077">
       <screen x="0" y="23" width="1280" height="730" />
     </state>
-    <state width="1238" height="192" key="GridCell.Tab.0.bottom/0.23.1280.730@0.23.1280.730" timestamp="1591303253436" />
+    <state width="1238" height="214" key="GridCell.Tab.0.bottom/0.23.1280.730@0.23.1280.730" timestamp="1591309651077" />
     <state width="1238" height="179" key="GridCell.Tab.0.bottom/0.23.1280.732@0.23.1280.732" timestamp="1591124518833" />
     <state width="1238" height="183" key="GridCell.Tab.0.bottom/0.23.1280.734@0.23.1280.734" timestamp="1590269444862" />
-    <state width="1238" height="192" key="GridCell.Tab.0.center" timestamp="1591303253435">
+    <state width="1238" height="214" key="GridCell.Tab.0.center" timestamp="1591309651076">
       <screen x="0" y="23" width="1280" height="730" />
     </state>
-    <state width="1238" height="192" key="GridCell.Tab.0.center/0.23.1280.730@0.23.1280.730" timestamp="1591303253435" />
+    <state width="1238" height="214" key="GridCell.Tab.0.center/0.23.1280.730@0.23.1280.730" timestamp="1591309651076" />
     <state width="1238" height="179" key="GridCell.Tab.0.center/0.23.1280.732@0.23.1280.732" timestamp="1591124518832" />
     <state width="1238" height="183" key="GridCell.Tab.0.center/0.23.1280.734@0.23.1280.734" timestamp="1590269444860" />
-    <state width="1238" height="192" key="GridCell.Tab.0.left" timestamp="1591303253434">
+    <state width="1238" height="214" key="GridCell.Tab.0.left" timestamp="1591309651075">
       <screen x="0" y="23" width="1280" height="730" />
     </state>
-    <state width="1238" height="192" key="GridCell.Tab.0.left/0.23.1280.730@0.23.1280.730" timestamp="1591303253434" />
+    <state width="1238" height="214" key="GridCell.Tab.0.left/0.23.1280.730@0.23.1280.730" timestamp="1591309651075" />
     <state width="1238" height="179" key="GridCell.Tab.0.left/0.23.1280.732@0.23.1280.732" timestamp="1591124518832" />
     <state width="1238" height="183" key="GridCell.Tab.0.left/0.23.1280.734@0.23.1280.734" timestamp="1590269444860" />
-    <state width="1238" height="192" key="GridCell.Tab.0.right" timestamp="1591303253436">
+    <state width="1238" height="214" key="GridCell.Tab.0.right" timestamp="1591309651076">
       <screen x="0" y="23" width="1280" height="730" />
     </state>
-    <state width="1238" height="192" key="GridCell.Tab.0.right/0.23.1280.730@0.23.1280.730" timestamp="1591303253436" />
+    <state width="1238" height="214" key="GridCell.Tab.0.right/0.23.1280.730@0.23.1280.730" timestamp="1591309651076" />
     <state width="1238" height="179" key="GridCell.Tab.0.right/0.23.1280.732@0.23.1280.732" timestamp="1591124518833" />
     <state width="1238" height="183" key="GridCell.Tab.0.right/0.23.1280.734@0.23.1280.734" timestamp="1590269444861" />
+    <state width="1238" height="223" key="GridCell.Tab.1.bottom" timestamp="1591309145523">
+      <screen x="0" y="23" width="1280" height="730" />
+    </state>
+    <state width="1238" height="223" key="GridCell.Tab.1.bottom/0.23.1280.730@0.23.1280.730" timestamp="1591309145523" />
+    <state width="1238" height="223" key="GridCell.Tab.1.center" timestamp="1591309145522">
+      <screen x="0" y="23" width="1280" height="730" />
+    </state>
+    <state width="1238" height="223" key="GridCell.Tab.1.center/0.23.1280.730@0.23.1280.730" timestamp="1591309145522" />
+    <state width="1238" height="223" key="GridCell.Tab.1.left" timestamp="1591309145522">
+      <screen x="0" y="23" width="1280" height="730" />
+    </state>
+    <state width="1238" height="223" key="GridCell.Tab.1.left/0.23.1280.730@0.23.1280.730" timestamp="1591309145522" />
+    <state width="1238" height="223" key="GridCell.Tab.1.right" timestamp="1591309145523">
+      <screen x="0" y="23" width="1280" height="730" />
+    </state>
+    <state width="1238" height="223" key="GridCell.Tab.1.right/0.23.1280.730@0.23.1280.730" timestamp="1591309145523" />
     <state x="221" y="115" width="837" height="550" key="find.popup" timestamp="1590267260495">
       <screen x="0" y="23" width="1280" height="734" />
     </state>

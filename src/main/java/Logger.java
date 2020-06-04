@@ -1,5 +1,7 @@
 import javax.annotation.PostConstruct;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Parameter;
@@ -12,6 +14,7 @@ import java.util.Calendar;
 public class Logger {
 
     private static Logger log;
+    private String direct = System.getProperty("user.dir") + "/logs/";
 
     private Logger() { }
 
@@ -30,10 +33,22 @@ public class Logger {
     }
 
     public void writeClassInstanceLog(Class c) throws IOException {
+        String toLogClassInst = direct+"/logClasses.txt";
+
         Method[] methods = c.getDeclaredMethods();
         String titleLog = "Class name: " + c.getName() + "\n";
         String logTxt = "";
-        if (c.getName().equals("Demo")) logTxt += "RUN GAME\n";
+        if (c.getName().equals("Demo")) {
+            BufferedWriter writer = new BufferedWriter(new FileWriter(toLogClassInst));
+            writer.write("");
+            writer.close();
+            logTxt += "RUN GAME\n";
+            Files.write(
+                    Paths.get(toLogClassInst),
+                    logTxt.getBytes(),
+                    StandardOpenOption.APPEND);
+            return;
+        }
         logTxt += "-------------------------\n" + titleLog.toUpperCase() + "-------------------------\n";
 
         for (Method method: methods) {
@@ -47,7 +62,7 @@ public class Logger {
             logTxt += "date: " + Calendar.getInstance().getTime() + "\n";
             logTxt += "---------------------- \n";
             Files.write(
-                    Paths.get(System.getProperty("user.dir") + "/logs/logClasses.txt"),
+                    Paths.get(toLogClassInst),
                     logTxt.getBytes(),
                     StandardOpenOption.APPEND);
         }

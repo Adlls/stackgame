@@ -45,16 +45,21 @@ public class Army implements IArmy {
     }
 
     @Override
-    public List<IUnit> createArmy(int price) throws NotEnoughPriceException {
+    public List<IUnit> createArmy(int price) {
         List<IUnit> army = new ArrayList<>();
         int sizeUnitFactory = currentUnits.size();
         int randomIndex;
         while (price >= getMinPrice()) {
             randomIndex = (int) (Math.random() * (sizeUnitFactory));
-            System.out.println(randomIndex);
-            IUnit unit = currentUnits.get(randomIndex).createUnit(price);
-            army.add(unit);
-            price -= unit.getCost();
+            try {
+                IUnit unit = currentUnits.get(randomIndex).createUnit(price);
+                army.add(unit);
+                price -= unit.getCost();
+            } catch (NotEnoughPriceException ex) {
+                System.out.println(ex.getMessage() + " for " + (army.size() - 1));
+                break;
+            }
+
         }
         return army;
     }
