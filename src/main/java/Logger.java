@@ -32,21 +32,25 @@ public class Logger {
     public void writeGameActionLog() {
     }
 
-    public void writeClassInstanceLog(Class c) throws IOException {
+    public void writeClassInstanceLog(Class c) {
         String toLogClassInst = direct+"/logClasses.txt";
 
         Method[] methods = c.getDeclaredMethods();
         String titleLog = "Class name: " + c.getName() + "\n";
         String logTxt = "";
         if (c.getName().equals("Demo")) {
-            BufferedWriter writer = new BufferedWriter(new FileWriter(toLogClassInst));
-            writer.write("");
-            writer.close();
-            logTxt += "RUN GAME\n";
-            Files.write(
-                    Paths.get(toLogClassInst),
-                    logTxt.getBytes(),
-                    StandardOpenOption.APPEND);
+            try {
+                BufferedWriter writer = new BufferedWriter(new FileWriter(toLogClassInst));
+                writer.write("");
+                writer.close();
+                logTxt += "RUN GAME\n";
+                Files.write(
+                        Paths.get(toLogClassInst),
+                        logTxt.getBytes(),
+                        StandardOpenOption.APPEND);
+            } catch (IOException ex) {
+                System.out.println(ex.getMessage());
+            }
             return;
         }
         logTxt += "-------------------------\n" + titleLog.toUpperCase() + "-------------------------\n";
@@ -61,9 +65,13 @@ public class Logger {
         }
             logTxt += "date: " + Calendar.getInstance().getTime() + "\n";
             logTxt += "---------------------- \n";
-            Files.write(
-                    Paths.get(toLogClassInst),
-                    logTxt.getBytes(),
-                    StandardOpenOption.APPEND);
+            try {
+                Files.write(
+                        Paths.get(toLogClassInst),
+                        logTxt.getBytes(),
+                        StandardOpenOption.APPEND);
+            } catch (IOException ex) {
+                System.out.println(ex.getMessage());
+            }
         }
 }

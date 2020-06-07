@@ -1,6 +1,6 @@
 package players.impl;
 
-import exceptions.NotEnoughPriceException;
+import exceptions.NotEnoughCoinsException;
 import players.BaseUnit;
 import players.IUnit;
 
@@ -18,11 +18,11 @@ public class Knight extends BaseUnit implements IUnit {
         COST = 500;
     }
 
-   public Knight(int price) throws NotEnoughPriceException {
+   public Knight(int price) throws NotEnoughCoinsException {
         super(price);
    }
 
-   public Knight(double HP, double AD, double DF, int price) throws NotEnoughPriceException {
+   public Knight(double HP, double AD, double DF, int price) throws NotEnoughCoinsException {
         super(price);
         this.HP = HP;
         this.AD = AD;

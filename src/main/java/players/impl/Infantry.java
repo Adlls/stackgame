@@ -1,6 +1,6 @@
 package players.impl;
 
-import exceptions.NotEnoughPriceException;
+import exceptions.NotEnoughCoinsException;
 import players.BaseUnit;
 import players.IUnit;
 
@@ -19,11 +19,11 @@ public class Infantry extends BaseUnit implements IUnit {
 
     }
 
-   public Infantry(int price) throws NotEnoughPriceException {
+   public Infantry(int price) throws NotEnoughCoinsException {
         super(price);
    }
 
-   public Infantry(double HP, double AD, double DF, int price) throws NotEnoughPriceException {
+   public Infantry(double HP, double AD, double DF, int price) throws NotEnoughCoinsException {
         super(price);
         this.AD = AD;
         this.DF = DF;

@@ -1,10 +1,10 @@
 package players;
 
-import exceptions.NotEnoughPriceException;
+import exceptions.NotEnoughCoinsException;
 
 public abstract class BaseUnit {
     protected static int COST;
-    public BaseUnit(int price) throws NotEnoughPriceException {
-        if (price < COST) throw new NotEnoughPriceException();
+    public BaseUnit(int price) throws NotEnoughCoinsException {
+        if (price < COST) throw new NotEnoughCoinsException();
     }
 }

@@ -1,4 +1,4 @@
-import exceptions.NotEnoughPriceException;
+import exceptions.NotEnoughCoinsException;
 import players.IUnit;
 import players.IUnitFactory;
 import java.io.File;
@@ -55,7 +55,7 @@ public class Army implements IArmy {
                 IUnit unit = currentUnits.get(randomIndex).createUnit(price);
                 army.add(unit);
                 price -= unit.getCost();
-            } catch (NotEnoughPriceException ex) {
+            } catch (NotEnoughCoinsException ex) {
                 System.out.println(ex.getMessage() + " for " + (army.size() - 1));
                 break;
             }
