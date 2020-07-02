@@ -10,6 +10,10 @@ Name method: getMinPrice
 params empty 
 return type: int
 ---------------------- 
+Name method: createEnemyArmy
+param: java.util.List<players.IUnit> arg0
+return type: interface java.util.List
+---------------------- 
 Name method: scanPathFactoriesForCurrentUnits
 param: java.util.List<players.IUnitFactory> arg0
 return type: interface java.util.List
@@ -18,12 +22,12 @@ Name method: getCurrentUnits
 param: java.util.List<players.IUnitFactory> arg0
 return type: void
 ---------------------- 
-date: Mon Jun 08 00:27:45 MSK 2020
+date: Thu Jul 02 20:07:14 MSK 2020
 ---------------------- 
 -------------------------
 CLASS NAME: APPLICATION
 -------------------------
-date: Mon Jun 08 00:27:45 MSK 2020
+date: Thu Jul 02 20:07:14 MSK 2020
 ---------------------- 
 -------------------------
 CLASS NAME: MENU
@@ -45,6 +49,19 @@ Name method: printMenu
 params empty 
 return type: void
 ---------------------- 
+Name method: doTurn
+param: java.util.List<players.IUnit> arg0
+param: java.util.List<players.IUnit> arg1
+return type: void
+---------------------- 
+Name method: showArmyUser
+params empty 
+return type: void
+---------------------- 
+Name method: showEnemyArmy
+params empty 
+return type: void
+---------------------- 
 Name method: turn
 params empty 
 return type: void
@@ -53,5 +70,5 @@ Name method: turnToEnd
 params empty 
 return type: void
 ---------------------- 
-date: Mon Jun 08 00:27:45 MSK 2020
+date: Thu Jul 02 20:07:14 MSK 2020
 ---------------------- 

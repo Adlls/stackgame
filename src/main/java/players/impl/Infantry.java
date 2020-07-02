@@ -9,14 +9,13 @@ public class Infantry extends BaseUnit implements IUnit {
     private double HP;
     private double AD;
     private double DF;
-   // private static double COST = 100;
+    private int price;
 
     {
         AD = 13;
         DF = 10;
         HP = 100;
         COST = 100;
-
     }
 
    public Infantry(int price) throws NotEnoughCoinsException {
@@ -28,6 +27,21 @@ public class Infantry extends BaseUnit implements IUnit {
         this.AD = AD;
         this.DF = DF;
         this.HP = HP;
+        this.price = price;
+    }
+
+    @Override
+    public String toString() {
+        return "Infantry{" +
+                "HP=" + HP +
+                ", AD=" + AD +
+                ", DF=" + DF +
+                '}';
+    }
+
+    @Override
+    public Infantry clone() throws CloneNotSupportedException {
+        return (Infantry) super.clone();
     }
 
     @Override
@@ -67,7 +81,7 @@ public class Infantry extends BaseUnit implements IUnit {
     }
 
     @Override
-    public void TakeDanger(double AD) {
-
+    public void takeDanger(double AD) {
+        this.HP -= AD;
     }
 }

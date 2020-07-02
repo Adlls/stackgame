@@ -1,6 +1,8 @@
+import exceptions.NotCreatedArmyException;
 import exceptions.NotEnoughCoinsException;
 import players.IUnit;
 import players.IUnitFactory;
+
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
@@ -44,6 +46,30 @@ public class Army implements IArmy {
         return minPrice;
     }
 
+
+    @Override
+    public List<IUnit> createEnemyArmy(List<IUnit> armyUser) throws NotCreatedArmyException {
+        int randomIndex;
+        List<IUnit> enemyArmy;
+
+
+        if (armyUser == null || armyUser.size() == 0) {
+            System.out.println("You army still not generate");
+            throw new NotCreatedArmyException();
+        }
+        enemyArmy = new ArrayList<>();
+        for (int i = 0; i < armyUser.size(); i++) {
+            randomIndex = (int) (Math.random() * (currentUnits.size()));
+            try {
+                IUnit unit = currentUnits.get(randomIndex).createUnit(100000000);
+                enemyArmy.add(unit);
+            } catch (NotEnoughCoinsException e) {
+
+            }
+        }
+        return enemyArmy;
+    }
+
     @Override
     public List<IUnit> createArmy(int price) {
         List<IUnit> army = new ArrayList<>();
@@ -56,7 +82,7 @@ public class Army implements IArmy {
                 army.add(unit);
                 price -= unit.getCost();
             } catch (NotEnoughCoinsException ex) {
-                System.out.println(ex.getMessage() + " for " + (army.size() - 1));
+                //System.out.println(ex.getMessage() + " for " + (army.size() - 1));
                 break;
             }
 

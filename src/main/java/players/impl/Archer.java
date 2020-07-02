@@ -2,48 +2,48 @@ package players.impl;
 
 import exceptions.NotEnoughCoinsException;
 import players.BaseUnit;
+import players.ISpecialAction;
 import players.IUnit;
 
-public class Knight extends BaseUnit implements IUnit {
+public class Archer extends BaseUnit implements IUnit, ISpecialAction {
 
     private double HP;
     private double AD;
     private double DF;
     private int price;
-   // public final static double COST = 500;
 
     {
+        AD = 10;
+        DF = 15;
         HP = 100;
-        AD = 27;
-        DF = 20;
-        COST = 500;
+        COST = 120;
     }
 
-   public Knight(int price) throws NotEnoughCoinsException {
+   public Archer(int price) throws NotEnoughCoinsException {
         super(price);
-   }
+
+    }
+
+    public Archer(double HP, double AD, double DF, int price) throws NotEnoughCoinsException {
+       super(price);
+       this.HP = HP;
+       this.AD = AD;
+       this.DF = DF;
+       this.price = price;
+    }
 
     @Override
     public String toString() {
-        return "Knight{" +
+        return "Archer{" +
                 "HP=" + HP +
                 ", AD=" + AD +
                 ", DF=" + DF +
                 '}';
     }
 
-    public Knight(double HP, double AD, double DF, int price) throws NotEnoughCoinsException {
-        super(price);
-        this.HP = HP;
-        this.AD = AD;
-        this.DF = DF;
-        this.price = price;
-    }
-
-
     @Override
-    public Knight clone() throws CloneNotSupportedException {
-        return (Knight) super.clone();
+    public Archer clone() throws CloneNotSupportedException {
+        return (Archer) super.clone();
     }
 
     @Override
@@ -57,9 +57,9 @@ public class Knight extends BaseUnit implements IUnit {
     }
 
     @Override
-    public void setHP(double HP) throws Exception {
-        if (HP > 0 && HP <= 100) this.HP = HP;
-        else throw new Exception("HP is incorrect");
+    public void setHP(double HP) {
+        this.HP = HP;
+
     }
 
     @Override
@@ -85,5 +85,15 @@ public class Knight extends BaseUnit implements IUnit {
     @Override
     public void takeDanger(double AD) {
         this.HP -= AD;
+    }
+
+    @Override
+    public void doSpecialAction() {
+        System.out.println("Стреляет через головы");
+    }
+
+    @Override
+    public double SpecialStrengthGet() {
+        return this.AD + 30;
     }
 }

@@ -2,6 +2,8 @@ package players;
 
 import exceptions.NotEnoughCoinsException;
 
-public interface IUnitFactory {
+//abstract factory
+public  interface IUnitFactory {
     IUnit createUnit(int maxPrice) throws NotEnoughCoinsException;
+
 }
