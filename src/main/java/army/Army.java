@@ -1,8 +1,9 @@
+package army;
+
 import exceptions.NotCreatedArmyException;
 import exceptions.NotEnoughCoinsException;
 import players.IUnit;
 import players.IUnitFactory;
-
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
@@ -16,7 +17,7 @@ public class Army implements IArmy {
     public static final int minPrice = 50;
 
     public Army() throws ClassNotFoundException, IllegalAccessException, InstantiationException, NoSuchMethodException, InvocationTargetException, IOException {
-        Logger.getLogger().writeClassInstanceLog(Army.class);
+        logger.Logger.getLogger().writeClassInstanceLog(Army.class);
         currentUnits = new ArrayList<>();
         getCurrentUnits(scanPathFactoriesForCurrentUnits(currentUnits));
     }

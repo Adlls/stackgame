@@ -5,6 +5,8 @@ import players.BaseUnit;
 import players.ISpecialAction;
 import players.IUnit;
 
+import java.util.List;
+
 public class Archer extends BaseUnit implements IUnit, ISpecialAction {
 
     private double HP;
@@ -88,8 +90,16 @@ public class Archer extends BaseUnit implements IUnit, ISpecialAction {
     }
 
     @Override
-    public void doSpecialAction() {
-        System.out.println("Стреляет через головы");
+    public void doSpecialAction(List<IUnit> unitsArmy) {
+        int maxIndexArmy = unitsArmy.size() - 1;
+        int targetIndexShot =  (int) (Math.random() * 6);
+
+        if (targetIndexShot < maxIndexArmy) {
+            unitsArmy.get(targetIndexShot).takeDanger(SpecialStrengthGet());
+        } else {
+            unitsArmy.get((targetIndexShot + 1) % (maxIndexArmy + 1)).takeDanger(SpecialStrengthGet());
+        }
+
     }
 
     @Override

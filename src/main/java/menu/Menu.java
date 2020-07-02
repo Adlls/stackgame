@@ -1,12 +1,13 @@
+package menu;
+
+import army.IArmy;
 import exceptions.NotCreatedArmyException;
-import exceptions.NotEnoughCoinsException;
 import players.ISpecialAction;
 import players.IUnit;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.LinkedList;
 import java.util.List;
 
 public class Menu implements IGame {
@@ -18,7 +19,7 @@ public class Menu implements IGame {
     private List<IUnit> enemyArmyImpl;
 
     public Menu(IArmy army, int coins) {
-        Logger.getLogger().writeClassInstanceLog(Menu.class);
+        logger.Logger.getLogger().writeClassInstanceLog(Menu.class);
         this.army  = army;
         this.coins = coins;
         reader = new BufferedReader(new InputStreamReader(System.in));
@@ -77,7 +78,7 @@ public class Menu implements IGame {
     public List<IUnit> createArmy(IArmy army, int price) {
         if (armyImpl == null) {
             armyImpl = army.createArmy(price);
-            System.out.println("Army created");
+            System.out.println("army.Army created");
             try {
                 enemyArmyImpl = army.createEnemyArmy(armyImpl);
                 System.out.println("Your army: ");
@@ -99,6 +100,7 @@ public class Menu implements IGame {
 
     public void doTurn(List<IUnit> userArmy, List<IUnit> enemyArmy) {
 
+        //generate random index for special actions
         int startIndexUserArmy = (int) (Math.random() * (userArmy.size()));
         int endIndexUserArmy = (int) (startIndexUserArmy + Math.random() * (userArmy.size() - startIndexUserArmy));
 
@@ -107,38 +109,79 @@ public class Menu implements IGame {
 
         IUnit currentUserUnit = userArmy.get(userArmy.size() - 1);
         IUnit currentEnemyUnit = enemyArmy.get(0);
+
+        System.out.println("==================================");
         System.out.println("user unit: " + currentUserUnit.toString() + " vs enemy unit: " + currentEnemyUnit.toString());
+        System.out.println("================================== \n");
+
+        System.out.println("==================================");
         System.out.println("Делает ход user unit: " +  currentUserUnit.toString());
         currentEnemyUnit.takeDanger(currentUserUnit.getAD());
-        System.out.println("Делает ход enemy unit: " +  currentEnemyUnit.toString());
-        currentUserUnit.takeDanger(currentEnemyUnit.getAD());
 
-        System.out.println("user unit: " + currentUserUnit.toString());
-        System.out.println("enemy unit: " + currentEnemyUnit.toString());
+        System.out.println("==================================");
+        if (currentEnemyUnit.getHP() > 0) {
+            System.out.println("==================================");
+            System.out.println("Делает ход enemy unit: " + currentEnemyUnit.toString());
+            currentUserUnit.takeDanger(currentEnemyUnit.getAD());
+            System.out.println("==================================");
+        }
 
 
         //choice specialAction for userArmy
         for (int i = startIndexUserArmy; i < endIndexUserArmy; i++) {
-            if (userArmy.get(i) instanceof ISpecialAction) {
-                ((ISpecialAction) userArmy.get(i)).doSpecialAction();
-                System.out.println("сделал спешиал юзер армия " + i);
+            if (userArmy.get(i) instanceof ISpecialAction && !userArmy.get(i).equals(currentUserUnit)) {
+                ((ISpecialAction) userArmy.get(i)).doSpecialAction(enemyArmy);
+                System.out.println("==================================");
+                System.out.println("You archer shot enemy army!");
+                System.out.println("==================================");
             }
         }
 
         //choice specialAction for enemyArmy
         for (int i = startIndexEnemyArmy; i < endIndexEnemyArmy; i++) {
-            if (enemyArmy.get(i) instanceof ISpecialAction) {
-                ((ISpecialAction) enemyArmy.get(i)).doSpecialAction();
-                System.out.println("сделал спешиал противник армия " + i);
+            if (enemyArmy.get(i) instanceof ISpecialAction && !enemyArmy.get(i).equals(currentEnemyUnit)) {
+                ((ISpecialAction) enemyArmy.get(i)).doSpecialAction(userArmy);
+                System.out.println("==================================");
+                System.out.println("Enemy archer shot you army!");
+                System.out.println("==================================");
+
             }
         }
 
-        //swap units
-        IUnit swapUnit = userArmy.remove(userArmy.size() - 1);
-        userArmy.add(0, swapUnit);
 
-        swapUnit = enemyArmy.remove(0);
-        userArmy.add(swapUnit);
+        //swap units and check for hp = 0
+        if (currentUserUnit.getHP() <= 0) {
+            userArmy.remove(userArmy.size() - 1);
+        } else {
+            IUnit swapUnit = userArmy.remove(userArmy.size() - 1);
+            userArmy.add(0, swapUnit);
+        }
+        if (currentEnemyUnit.getHP() <= 0) {
+             enemyArmy.remove(0);
+        } else {
+            IUnit swapUnit = enemyArmy.remove(0);
+            enemyArmy.add(swapUnit);
+        }
+
+    }
+
+    public void doTurnToEnd(List<IUnit> userArmy, List<IUnit> enemyArmy) {
+        while (userArmy.size() != 0 && enemyArmy.size() != 0) {
+            doTurn(userArmy, enemyArmy);
+            try {
+                Thread.sleep(2000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            System.out.println("===================");
+            System.out.println("Ваши соратники: ");
+            showArmyUser();
+            System.out.println("Ваши противники: ");
+            showEnemyArmy();
+            System.out.println("===================");
+        }
+        if (userArmy.size() != 0) System.out.println("You win!");
+        if (enemyArmy.size() != 0) System.out.println("You lost");
 
     }
 
@@ -185,7 +228,8 @@ public class Menu implements IGame {
             System.out.println("You still not render army");
             displayMenu(reader);
         } else {
-            System.out.println("Играем до конца...");
+            System.out.println("play to the end...");
+            doTurnToEnd(armyImpl, enemyArmyImpl);
         }
     }
 }

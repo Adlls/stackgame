@@ -1,3 +1,6 @@
+package menu;
+
+import army.IArmy;
 import exceptions.NotEnoughCoinsException;
 import players.IUnit;
 

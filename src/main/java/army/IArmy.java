@@ -1,3 +1,5 @@
+package army;
+
 import exceptions.NotCreatedArmyException;
 import exceptions.NotEnoughCoinsException;
 import players.IUnit;

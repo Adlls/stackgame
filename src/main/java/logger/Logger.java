@@ -1,6 +1,6 @@
-import javax.annotation.PostConstruct;
+package logger;
+
 import java.io.BufferedWriter;
-import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.reflect.Method;
@@ -8,7 +8,6 @@ import java.lang.reflect.Parameter;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
-import java.security.Policy;
 import java.util.Calendar;
 
 public class Logger {

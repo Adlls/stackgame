@@ -1,4 +1,7 @@
+import army.Army;
+import army.IArmy;
 import exceptions.NotEnoughCoinsException;
+import logger.Logger;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;

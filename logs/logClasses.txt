@@ -1,10 +1,14 @@
 RUN GAME
 -------------------------
-CLASS NAME: ARMY
+CLASS NAME: ARMY.ARMY
 -------------------------
-Name method: createArmy
-param: int arg0
+Name method: scanPathFactoriesForCurrentUnits
+param: java.util.List<players.IUnitFactory> arg0
 return type: interface java.util.List
+---------------------- 
+Name method: getCurrentUnits
+param: java.util.List<players.IUnitFactory> arg0
+return type: void
 ---------------------- 
 Name method: getMinPrice
 params empty 
@@ -14,26 +18,22 @@ Name method: createEnemyArmy
 param: java.util.List<players.IUnit> arg0
 return type: interface java.util.List
 ---------------------- 
-Name method: scanPathFactoriesForCurrentUnits
-param: java.util.List<players.IUnitFactory> arg0
+Name method: createArmy
+param: int arg0
 return type: interface java.util.List
 ---------------------- 
-Name method: getCurrentUnits
-param: java.util.List<players.IUnitFactory> arg0
-return type: void
----------------------- 
-date: Thu Jul 02 20:07:14 MSK 2020
+date: Thu Jul 02 22:05:27 MSK 2020
 ---------------------- 
 -------------------------
 CLASS NAME: APPLICATION
 -------------------------
-date: Thu Jul 02 20:07:14 MSK 2020
+date: Thu Jul 02 22:05:27 MSK 2020
 ---------------------- 
 -------------------------
-CLASS NAME: MENU
+CLASS NAME: MENU.MENU
 -------------------------
 Name method: createArmy
-param: IArmy arg0
+param: army.IArmy arg0
 param: int arg1
 return type: interface java.util.List
 ---------------------- 
@@ -54,6 +54,11 @@ param: java.util.List<players.IUnit> arg0
 param: java.util.List<players.IUnit> arg1
 return type: void
 ---------------------- 
+Name method: doTurnToEnd
+param: java.util.List<players.IUnit> arg0
+param: java.util.List<players.IUnit> arg1
+return type: void
+---------------------- 
 Name method: showArmyUser
 params empty 
 return type: void
@@ -70,5 +75,5 @@ Name method: turnToEnd
 params empty 
 return type: void
 ---------------------- 
-date: Thu Jul 02 20:07:14 MSK 2020
+date: Thu Jul 02 22:05:27 MSK 2020
 ---------------------- 
