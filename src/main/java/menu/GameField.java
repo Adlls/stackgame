@@ -1,8 +1,10 @@
 package menu;
 
+import army.ContextBattleStrategy;
 import army.IArmy;
+import army.OneOnOneStrategy;
+import army.WallToWallStrategy;
 import exceptions.NotCreatedArmyException;
-import exceptions.NotEnoughCoinsException;
 import players.ISpecialAction;
 import players.IUnit;
 import players.impl.Archer;
@@ -10,16 +12,18 @@ import players.impl.Healer;
 import players.impl.Infantry;
 import players.impl.Wizard;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
 import java.util.List;
 
 public class GameField implements IGame {
 
     private List<IUnit> armyImpl;
     private List<IUnit> enemyArmyImpl;
+    private ContextBattleStrategy contextBattleStrategy;
     GameField() {
         logger.Logger.getLogger().writeClassInstanceLog(Menu.class);
+        contextBattleStrategy = new ContextBattleStrategy();
+        //contextBattleStrategy.setBattleTypeStrategy(new OneOnOneStrategy());
+        contextBattleStrategy.setBattleTypeStrategy(new WallToWallStrategy());
     }
 
     @Override
@@ -43,7 +47,6 @@ public class GameField implements IGame {
 
         return armyImpl;
     }
-
 
     private void choiceSpecialActions(
             List<IUnit> userArmy,
@@ -151,7 +154,6 @@ public class GameField implements IGame {
 
     public void doTurn(List<IUnit> userArmy, List<IUnit> enemyArmy) {
 
-        //generate random index for special actions
         int startIndexUserArmy = (int) (Math.random() * (userArmy.size()));
         int endIndexUserArmy = (int) (startIndexUserArmy + Math.random() * (userArmy.size() - startIndexUserArmy));
 
@@ -161,22 +163,7 @@ public class GameField implements IGame {
         IUnit currentUserUnit = userArmy.get(userArmy.size() - 1);
         IUnit currentEnemyUnit = enemyArmy.get(0);
 
-        System.out.println("==================================");
-        System.out.println("user unit: " + currentUserUnit.toString() + " vs enemy unit: " + currentEnemyUnit.toString());
-        System.out.println("================================== \n");
-
-        System.out.println("==================================");
-        System.out.println("Делает ход user unit: " +  currentUserUnit.toString());
-        currentEnemyUnit.takeDanger(currentUserUnit.getAD());
-
-        System.out.println("==================================");
-        if (currentEnemyUnit.getHP() > 0) {
-            System.out.println("==================================");
-            System.out.println("Делает ход enemy unit: " + currentEnemyUnit.toString());
-            currentUserUnit.takeDanger(currentEnemyUnit.getAD());
-            System.out.println("==================================");
-        }
-
+        contextBattleStrategy.executeTypeBattle(userArmy, enemyArmy, currentUserUnit, currentEnemyUnit);
         choiceSpecialActions(
                 userArmy,
                 enemyArmy,
@@ -187,10 +174,12 @@ public class GameField implements IGame {
                 currentUserUnit,
                 currentEnemyUnit);
 
+        /*
         swapUnits(currentUserUnit,
                   currentEnemyUnit,
                   userArmy,
                   enemyArmy);
+         */
 
     }
 

@@ -105,7 +105,7 @@ public class Infantry extends BaseUnit implements ISpecialAction {
                         AccouterDecorator accouter =
                                 new HorseAccouterDecorator(new HelmetAccouterDecorator(new Accouter()));
                         accouter.toDress(unitsArmy.get(i - 1));
-                        ((Knight) unitsArmy.get(i - 1)).showWear();
+                        //((Knight) unitsArmy.get(i - 1)).showWear();
                         //устанавливаем только новую броню
                         unitsArmy.get(i - 1).setDF(getDF());
                         break;
@@ -113,7 +113,7 @@ public class Infantry extends BaseUnit implements ISpecialAction {
                         AccouterDecorator accouter =
                                 new HorseAccouterDecorator(new HelmetAccouterDecorator(new Accouter()));
                         accouter.toDress(unitsArmy.get(i + 1));
-                        ((Knight) unitsArmy.get(i + 1)).showWear();
+                        //((Knight) unitsArmy.get(i + 1)).showWear();
                         //устанавливаем только новую броню
                         unitsArmy.get(i - 1).setDF(getDF());
                         break;

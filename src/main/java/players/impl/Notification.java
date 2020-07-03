@@ -11,7 +11,7 @@ public class Notification implements INotification {
     public void notificationDieUnity(IUnit unit) {
         if (unit.getHP() <= 0) {
             Toolkit.getDefaultToolkit().beep();
-            System.out.println("Соратник пал в битве!");
+            System.out.println("Юнит пал в битве!");
         }
     }
 }

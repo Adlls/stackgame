@@ -39,12 +39,13 @@ public class Knight extends BaseUnit {
     }
 
 
+    /*
     public void showWear() {
         for(String wear: wears) {
             System.out.println(wear);
         }
     }
-
+     */
     public Knight clone() {
         try {
             return new Knight(this.HP, this.AD, this.DF, COST);
