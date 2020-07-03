@@ -22,15 +22,14 @@ public class GameField implements IGame {
     GameField() {
         logger.Logger.getLogger().writeClassInstanceLog(Menu.class);
         contextBattleStrategy = new ContextBattleStrategy();
-        //contextBattleStrategy.setBattleTypeStrategy(new OneOnOneStrategy());
-        contextBattleStrategy.setBattleTypeStrategy(new WallToWallStrategy());
+        contextBattleStrategy.setBattleTypeStrategy(new OneOnOneStrategy());
     }
 
     @Override
     public List<IUnit> createArmy(IArmy army, int price) {
         if (armyImpl == null) {
             armyImpl = army.createArmy(price);
-            System.out.println("army.Army created");
+            System.out.println("Army created");
             try {
                 enemyArmyImpl = army.createEnemyArmy(armyImpl);
                 System.out.println("Your army: ");
@@ -46,6 +45,28 @@ public class GameField implements IGame {
         }
 
         return armyImpl;
+    }
+
+    public boolean setOneOnOneStrategy() {
+        if (armyImpl == null) {
+            System.out.println("You still not generate army");
+            return false;
+        } else {
+            contextBattleStrategy.setBattleTypeStrategy(new OneOnOneStrategy());
+            System.out.println("Strategy one on one activated");
+            return true;
+        }
+    }
+
+    public boolean setWallToWallStrategy() {
+        if (armyImpl == null) {
+            System.out.println("You still not generate army");
+            return false;
+        } else {
+            contextBattleStrategy.setBattleTypeStrategy(new WallToWallStrategy());
+            System.out.println("Strategy wall to wall activated");
+            return true;
+        }
     }
 
     private void choiceSpecialActions(
@@ -163,7 +184,6 @@ public class GameField implements IGame {
         IUnit currentUserUnit = userArmy.get(userArmy.size() - 1);
         IUnit currentEnemyUnit = enemyArmy.get(0);
 
-        contextBattleStrategy.executeTypeBattle(userArmy, enemyArmy, currentUserUnit, currentEnemyUnit);
         choiceSpecialActions(
                 userArmy,
                 enemyArmy,
@@ -173,6 +193,8 @@ public class GameField implements IGame {
                 endIndexEnemyArmy,
                 currentUserUnit,
                 currentEnemyUnit);
+
+        contextBattleStrategy.executeTypeBattle(userArmy, enemyArmy, currentUserUnit, currentEnemyUnit);
 
         /*
         swapUnits(currentUserUnit,

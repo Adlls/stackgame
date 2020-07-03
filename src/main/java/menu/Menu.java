@@ -56,6 +56,12 @@ public class Menu {
             case 5:
                 gameField.showEnemyArmy();
                 displayMenu(reader);
+            case 6:
+                gameField.setWallToWallStrategy();
+                displayMenu(reader);
+            case 7:
+                gameField.setOneOnOneStrategy();
+                displayMenu(reader);
             default:
                 System.out.println("Incorrect point menu. Please try again.");
                 displayMenu(reader);
@@ -69,7 +75,8 @@ public class Menu {
         System.out.println("3. Turn to end");
         System.out.println("4. Show my army");
         System.out.println("5. Show enemy army");
+        System.out.println("6. Wall on wall strategy");
+        System.out.println("7. One on one strategy (default)");
     }
-
 
 }

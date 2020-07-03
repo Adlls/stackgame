@@ -102,7 +102,10 @@ public class Archer extends BaseUnit implements ISpecialAction {
         if (targetIndexShot < maxIndexArmy) {
             unitsArmy.get(targetIndexShot).takeDanger(SpecialStrengthGet());
         } else {
-            unitsArmy.get((targetIndexShot + 1) % (maxIndexArmy + 1)).takeDanger(SpecialStrengthGet());
+            try {
+                unitsArmy.get((targetIndexShot + 1) % (maxIndexArmy + 1)).takeDanger(SpecialStrengthGet());
+            } catch (ArithmeticException e) {
+            }
         }
 
     }
