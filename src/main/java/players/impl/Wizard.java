@@ -7,47 +7,32 @@ import players.IUnit;
 
 import java.util.List;
 
-public class Archer extends BaseUnit implements ISpecialAction {
+public class Wizard extends BaseUnit implements ISpecialAction {
 
     private double HP;
     private double AD;
     private double DF;
 
     {
-        AD = 10;
-        DF = 15;
         HP = 100;
-        COST = 120;
+        AD = 20;
+        DF = 18;
+        COST = 400;
     }
 
-   public Archer(int price) throws NotEnoughCoinsException {
+
+    public Wizard(int price) throws NotEnoughCoinsException {
         super(price);
-
     }
 
-    public Archer(double HP, double AD, double DF, int price) throws NotEnoughCoinsException {
-       super(price);
-       this.HP = HP;
-       this.AD = AD;
-       this.DF = DF;
-    }
 
     @Override
     public String toString() {
-        return "Archer{" +
+        return "Wizard{" +
                 "HP=" + HP +
                 ", AD=" + AD +
                 ", DF=" + DF +
                 '}';
-    }
-
-    public Archer clone() {
-        try {
-            return new Archer(this.HP, this.AD, this.DF, COST);
-        } catch (NotEnoughCoinsException e) {
-            e.printStackTrace();
-        }
-        return null;
     }
 
     @Override
@@ -63,8 +48,6 @@ public class Archer extends BaseUnit implements ISpecialAction {
     @Override
     public void setHP(double HP) {
         this.HP = HP;
-        if (this.HP > 100) this.HP = 100;
-        if (this.HP < 0) this.HP = 0;
     }
 
     @Override
@@ -94,19 +77,29 @@ public class Archer extends BaseUnit implements ISpecialAction {
 
     @Override
     public void doSpecialAction(List<IUnit> unitsArmy) {
-        int maxIndexArmy = unitsArmy.size() - 1;
-        int targetIndexShot =  (int) (Math.random() * 6);
+        for (int i = 0; i < unitsArmy.size(); i++) {
+            if (unitsArmy.get(i).equals(this)) {
+                if ((i + 1 <= unitsArmy.size() - 1)) {
+                    if (unitsArmy.get(i + 1) instanceof Knight) {
+                           unitsArmy.add(((Knight) unitsArmy.get(i + 1)).clone());
 
-        if (targetIndexShot < maxIndexArmy) {
-            unitsArmy.get(targetIndexShot).takeDanger(SpecialStrengthGet());
-        } else {
-            unitsArmy.get((targetIndexShot + 1) % (maxIndexArmy + 1)).takeDanger(SpecialStrengthGet());
+                    } else if (unitsArmy.get(i + 1) instanceof Archer) {
+                           unitsArmy.add(((Archer) unitsArmy.get(i + 1)).clone());
+                    }
+                } else if (i - 1 >= 0) {
+                    if (unitsArmy.get(i - 1) instanceof Knight) {
+                           unitsArmy.add(((Knight) unitsArmy.get(i - 1)).clone());
+                    } else if (unitsArmy.get(i - 1) instanceof Archer) {
+                           unitsArmy.add(((Archer) unitsArmy.get(i - 1)).clone());
+                    }
+                }
+                break;
+            }
         }
-
     }
 
     @Override
     public double SpecialStrengthGet() {
-        return this.AD + 30;
+        return 0;
     }
 }

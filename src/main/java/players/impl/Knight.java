@@ -2,15 +2,13 @@ package players.impl;
 
 import exceptions.NotEnoughCoinsException;
 import players.BaseUnit;
-import players.IUnit;
 
-public class Knight extends BaseUnit implements IUnit {
+public class Knight extends BaseUnit {
 
     private double HP;
     private double AD;
     private double DF;
     private int price;
-   // public final static double COST = 500;
 
     {
         HP = 100;
@@ -41,9 +39,19 @@ public class Knight extends BaseUnit implements IUnit {
     }
 
 
-    @Override
-    public Knight clone() throws CloneNotSupportedException {
-        return (Knight) super.clone();
+    public void showWear() {
+        for(String wear: wears) {
+            System.out.println(wear);
+        }
+    }
+
+    public Knight clone() {
+        try {
+            return new Knight(this.HP, this.AD, this.DF, COST);
+        } catch (NotEnoughCoinsException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     @Override
@@ -57,9 +65,10 @@ public class Knight extends BaseUnit implements IUnit {
     }
 
     @Override
-    public void setHP(double HP) throws Exception {
-        if (HP > 0 && HP <= 100) this.HP = HP;
-        else throw new Exception("HP is incorrect");
+    public void setHP(double HP) {
+        this.HP = HP;
+        if (this.HP > 100) this.HP = 100;
+        if (this.HP < 0) this.HP = 0;
     }
 
     @Override
@@ -80,10 +89,23 @@ public class Knight extends BaseUnit implements IUnit {
     @Override
     public void setDF(double DF) {
         this.DF = DF;
+        if (wears.contains("Броня")) this.DF += 10;
+        if (wears.contains("Лошадь")) this.DF += 15;
+        if (wears.contains("Шлем")) this.DF += 10;
     }
 
     @Override
     public void takeDanger(double AD) {
+        int randomIndexWear = (int) (Math.random() * 4);
+        int randomDestroyWear = (int) (Math.random() * 15);
+        if (randomIndexWear <= wears.size() - 1) {
+            if (randomDestroyWear >= 13) {
+               String wear = wears.remove(randomIndexWear);
+               if (wear.equals("Броня")) this.DF -= 10;
+               if (wear.equals("Лошадь")) this.DF -= 15;
+               if (wear.equals("Шлем")) this.DF -= 10;
+            }
+        }
         this.HP -= AD;
     }
 }

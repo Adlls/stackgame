@@ -7,43 +7,44 @@ import players.IUnit;
 
 import java.util.List;
 
-public class Archer extends BaseUnit implements ISpecialAction {
+public class Healer extends BaseUnit implements ISpecialAction {
 
     private double HP;
     private double AD;
     private double DF;
 
     {
-        AD = 10;
-        DF = 15;
+        AD = 5;
+        DF = 18;
         HP = 100;
-        COST = 120;
-    }
-
-   public Archer(int price) throws NotEnoughCoinsException {
-        super(price);
-
-    }
-
-    public Archer(double HP, double AD, double DF, int price) throws NotEnoughCoinsException {
-       super(price);
-       this.HP = HP;
-       this.AD = AD;
-       this.DF = DF;
+        COST = 160;
     }
 
     @Override
     public String toString() {
-        return "Archer{" +
+        return "Healer{" +
                 "HP=" + HP +
                 ", AD=" + AD +
                 ", DF=" + DF +
                 '}';
     }
 
-    public Archer clone() {
+
+    public Healer(int price) throws NotEnoughCoinsException {
+        super(price);
+    }
+
+    public Healer(double HP, double AD, double DF, int price) throws NotEnoughCoinsException {
+        super(price);
+        this.HP = HP;
+        this.AD = AD;
+        this.DF = DF;
+    }
+
+
+    public Healer clone() {
         try {
-            return new Archer(this.HP, this.AD, this.DF, COST);
+            return new Healer(this.HP, this.AD, this.DF, COST);
         } catch (NotEnoughCoinsException e) {
             e.printStackTrace();
         }
@@ -63,8 +64,6 @@ public class Archer extends BaseUnit implements ISpecialAction {
     @Override
     public void setHP(double HP) {
         this.HP = HP;
-        if (this.HP > 100) this.HP = 100;
-        if (this.HP < 0) this.HP = 0;
     }
 
     @Override
@@ -94,19 +93,17 @@ public class Archer extends BaseUnit implements ISpecialAction {
 
     @Override
     public void doSpecialAction(List<IUnit> unitsArmy) {
-        int maxIndexArmy = unitsArmy.size() - 1;
-        int targetIndexShot =  (int) (Math.random() * 6);
-
-        if (targetIndexShot < maxIndexArmy) {
-            unitsArmy.get(targetIndexShot).takeDanger(SpecialStrengthGet());
-        } else {
-            unitsArmy.get((targetIndexShot + 1) % (maxIndexArmy + 1)).takeDanger(SpecialStrengthGet());
+            for (int i = 0; i < unitsArmy.size(); i++) {
+                if (unitsArmy.get(i).equals(this)) {
+                    if (i + 1 <= unitsArmy.size() - 1) unitsArmy.get(i + 1).setHP(10);
+                    if (i - 1 >= 0) unitsArmy.get(i - 1).setHP(10);
+                    break;
+                }
+            }
         }
-
-    }
 
     @Override
     public double SpecialStrengthGet() {
-        return this.AD + 30;
+        return 0;
     }
 }

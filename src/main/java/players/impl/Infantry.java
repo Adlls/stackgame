@@ -2,14 +2,20 @@ package players.impl;
 
 import exceptions.NotEnoughCoinsException;
 import players.BaseUnit;
+import players.ISpecialAction;
 import players.IUnit;
+import players.impl.decorator.Accouter;
+import players.impl.decorator.AccouterDecorator;
+import players.impl.decorator.HelmetAccouterDecorator;
+import players.impl.decorator.HorseAccouterDecorator;
 
-public class Infantry extends BaseUnit implements IUnit {
+import java.util.List;
+
+public class Infantry extends BaseUnit implements ISpecialAction {
 
     private double HP;
     private double AD;
     private double DF;
-    private int price;
 
     {
         AD = 13;
@@ -27,8 +33,17 @@ public class Infantry extends BaseUnit implements IUnit {
         this.AD = AD;
         this.DF = DF;
         this.HP = HP;
-        this.price = price;
     }
+
+    public Infantry clone() {
+        try {
+            return new Infantry(this.HP, this.AD, this.DF, COST);
+        } catch (NotEnoughCoinsException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 
     @Override
     public String toString() {
@@ -37,11 +52,6 @@ public class Infantry extends BaseUnit implements IUnit {
                 ", AD=" + AD +
                 ", DF=" + DF +
                 '}';
-    }
-
-    @Override
-    public Infantry clone() throws CloneNotSupportedException {
-        return (Infantry) super.clone();
     }
 
     @Override
@@ -55,9 +65,10 @@ public class Infantry extends BaseUnit implements IUnit {
     }
 
     @Override
-    public void setHP(double HP) throws Exception {
-        if (HP > 0 && HP <= 100) this.HP = HP;
-        else throw new Exception("HP is incorrect");
+    public void setHP(double HP) {
+        this.HP = HP;
+        if (this.HP > 100) this.HP = 100;
+        if (this.HP < 0) this.HP = 0;
     }
 
     @Override
@@ -83,5 +94,36 @@ public class Infantry extends BaseUnit implements IUnit {
     @Override
     public void takeDanger(double AD) {
         this.HP -= AD;
+    }
+
+    @Override
+    public void doSpecialAction(List<IUnit> unitsArmy) {
+            for (int i = 0; i < unitsArmy.size(); i++) {
+                if (unitsArmy.get(i).equals(this) && (i - 1) >= 0 && (i + 1) <= unitsArmy.size() - 1) {
+                    if (unitsArmy.get(i - 1) instanceof Knight) {
+                        AccouterDecorator accouter =
+                                new HorseAccouterDecorator(new HelmetAccouterDecorator(new Accouter()));
+                        accouter.toDress(unitsArmy.get(i - 1));
+                        ((Knight) unitsArmy.get(i - 1)).showWear();
+                        //устанавливаем только новую броню
+                        unitsArmy.get(i - 1).setDF(getDF());
+                        break;
+                    } else if (unitsArmy.get(i + 1) instanceof Knight) {
+                        AccouterDecorator accouter =
+                                new HorseAccouterDecorator(new HelmetAccouterDecorator(new Accouter()));
+                        accouter.toDress(unitsArmy.get(i + 1));
+                        ((Knight) unitsArmy.get(i + 1)).showWear();
+                        //устанавливаем только новую броню
+                        unitsArmy.get(i - 1).setDF(getDF());
+                        break;
+                    }
+                }
+            }
+
+        }
+
+    @Override
+    public double SpecialStrengthGet() {
+        return 0;
     }
 }

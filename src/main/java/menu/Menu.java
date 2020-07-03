@@ -4,6 +4,10 @@ import army.IArmy;
 import exceptions.NotCreatedArmyException;
 import players.ISpecialAction;
 import players.IUnit;
+import players.impl.Archer;
+import players.impl.Healer;
+import players.impl.Infantry;
+import players.impl.Wizard;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -130,21 +134,75 @@ public class Menu implements IGame {
         //choice specialAction for userArmy
         for (int i = startIndexUserArmy; i < endIndexUserArmy; i++) {
             if (userArmy.get(i) instanceof ISpecialAction && !userArmy.get(i).equals(currentUserUnit)) {
-                ((ISpecialAction) userArmy.get(i)).doSpecialAction(enemyArmy);
-                System.out.println("==================================");
-                System.out.println("You archer shot enemy army!");
-                System.out.println("==================================");
+
+                if (userArmy.get(i) instanceof Wizard) {
+                    ((ISpecialAction) userArmy.get(i)).doSpecialAction(userArmy);
+                    System.out.println("==================================");
+                    System.out.println("Ваши волшебники склонировали наших товарищей!");
+                    System.out.println("==================================");
+                }
+
+                if (userArmy.get(i) instanceof Archer) {
+                    ((ISpecialAction) userArmy.get(i)).doSpecialAction(enemyArmy);
+                    System.out.println("==================================");
+                    System.out.println("Ваши лучники воспользовались стрелами!");
+                    System.out.println("==================================");
+
+                }
+                if (userArmy.get(i) instanceof Healer) {
+                    ((ISpecialAction) userArmy.get(i)).doSpecialAction(userArmy);
+                    System.out.println("==================================");
+                    System.out.println("Ваши соратники излечились!");
+                    System.out.println("==================================");
+
+                }
+
+                if (userArmy.get(i) instanceof Infantry) {
+                    ((ISpecialAction) userArmy.get(i)).doSpecialAction(userArmy);
+                    System.out.println("==================================");
+                    System.out.println("Ваши соратники оделись!");
+                    System.out.println("==================================");
+
+                }
+
             }
         }
 
         //choice specialAction for enemyArmy
         for (int i = startIndexEnemyArmy; i < endIndexEnemyArmy; i++) {
             if (enemyArmy.get(i) instanceof ISpecialAction && !enemyArmy.get(i).equals(currentEnemyUnit)) {
-                ((ISpecialAction) enemyArmy.get(i)).doSpecialAction(userArmy);
-                System.out.println("==================================");
-                System.out.println("Enemy archer shot you army!");
-                System.out.println("==================================");
 
+                if (enemyArmy.get(i) instanceof Wizard) {
+                    ((ISpecialAction) enemyArmy.get(i)).doSpecialAction(enemyArmy);
+                    System.out.println("==================================");
+                    System.out.println("Волшебники противников склонировали своих бойцов!");
+                    System.out.println("==================================");
+                }
+
+
+                if (enemyArmy.get(i) instanceof Archer) {
+                    ((Archer) enemyArmy.get(i)).doSpecialAction(userArmy);
+                    System.out.println("==================================");
+                    System.out.println("Противники воспользовались лучниками!");
+                    System.out.println("==================================");
+
+
+                }
+                if (enemyArmy.get(i) instanceof Healer) {
+                    ((Healer) enemyArmy.get(i)).doSpecialAction(enemyArmy);
+                    System.out.println("==================================");
+                    System.out.println("Противники излечили своих товарищей!");
+                    System.out.println("==================================");
+
+                }
+
+                if (enemyArmy.get(i) instanceof Infantry) {
+                    ((Infantry) enemyArmy.get(i)).doSpecialAction(enemyArmy);
+                    System.out.println("==================================");
+                    System.out.println("Противники оделись!");
+                    System.out.println("==================================");
+
+                }
             }
         }
 

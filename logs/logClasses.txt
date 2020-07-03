@@ -2,14 +2,6 @@ RUN GAME
 -------------------------
 CLASS NAME: ARMY.ARMY
 -------------------------
-Name method: scanPathFactoriesForCurrentUnits
-param: java.util.List<players.IUnitFactory> arg0
-return type: interface java.util.List
----------------------- 
-Name method: getCurrentUnits
-param: java.util.List<players.IUnitFactory> arg0
-return type: void
----------------------- 
 Name method: getMinPrice
 params empty 
 return type: int
@@ -22,12 +14,20 @@ Name method: createArmy
 param: int arg0
 return type: interface java.util.List
 ---------------------- 
-date: Thu Jul 02 22:05:27 MSK 2020
+Name method: scanPathFactoriesForCurrentUnits
+param: java.util.List<players.IUnitFactory> arg0
+return type: interface java.util.List
+---------------------- 
+Name method: getCurrentUnits
+param: java.util.List<players.IUnitFactory> arg0
+return type: void
+---------------------- 
+date: Fri Jul 03 03:30:35 MSK 2020
 ---------------------- 
 -------------------------
 CLASS NAME: APPLICATION
 -------------------------
-date: Thu Jul 02 22:05:27 MSK 2020
+date: Fri Jul 03 03:30:36 MSK 2020
 ---------------------- 
 -------------------------
 CLASS NAME: MENU.MENU
@@ -75,5 +75,5 @@ Name method: turnToEnd
 params empty 
 return type: void
 ---------------------- 
-date: Thu Jul 02 22:05:27 MSK 2020
+date: Fri Jul 03 03:30:36 MSK 2020
 ---------------------- 
