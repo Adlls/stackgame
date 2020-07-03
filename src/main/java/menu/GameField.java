@@ -19,6 +19,9 @@ public class GameField implements IGame {
     private List<IUnit> armyImpl;
     private List<IUnit> enemyArmyImpl;
     private ContextBattleStrategy contextBattleStrategy;
+    private Command commandUndoUserArmy;
+    private Command commandUndoEnemyArmy;
+
     GameField() {
         logger.Logger.getLogger().writeClassInstanceLog(Menu.class);
         contextBattleStrategy = new ContextBattleStrategy();
@@ -39,12 +42,25 @@ public class GameField implements IGame {
             } catch (NotCreatedArmyException e) {
                 e.printStackTrace();
             }
+            commandUndoUserArmy = new UndoCommand(armyImpl);
+            commandUndoEnemyArmy = new UndoCommand(enemyArmyImpl);
+            commandUndoUserArmy.push(armyImpl);
+            commandUndoEnemyArmy.push(enemyArmyImpl);
         }
         else {
             System.out.println("You already render army");
         }
 
         return armyImpl;
+    }
+
+    public void undoArmy() {
+        if (armyImpl != null) {
+           armyImpl = commandUndoUserArmy.pop();
+           enemyArmyImpl = commandUndoEnemyArmy.pop();
+        } else {
+            System.out.println("army is empty");
+        }
     }
 
     public boolean setOneOnOneStrategy() {
@@ -154,24 +170,6 @@ public class GameField implements IGame {
         }
     }
 
-    private void swapUnits(IUnit currentUserUnit,
-                           IUnit currentEnemyUnit,
-                           List<IUnit> userArmy,
-                           List<IUnit> enemyArmy) {
-        //swap units and check for hp = 0
-        if (currentUserUnit.getHP() <= 0) {
-            userArmy.remove(userArmy.size() - 1);
-        } else {
-            IUnit swapUnit = userArmy.remove(userArmy.size() - 1);
-            userArmy.add(0, swapUnit);
-        }
-        if (currentEnemyUnit.getHP() <= 0) {
-            enemyArmy.remove(0);
-        } else {
-            IUnit swapUnit = enemyArmy.remove(0);
-            enemyArmy.add(swapUnit);
-        }
-    }
 
     public void doTurn(List<IUnit> userArmy, List<IUnit> enemyArmy) {
 
@@ -195,14 +193,8 @@ public class GameField implements IGame {
                 currentEnemyUnit);
 
         contextBattleStrategy.executeTypeBattle(userArmy, enemyArmy, currentUserUnit, currentEnemyUnit);
-
-        /*
-        swapUnits(currentUserUnit,
-                  currentEnemyUnit,
-                  userArmy,
-                  enemyArmy);
-         */
-
+        commandUndoUserArmy.push(userArmy);
+        commandUndoEnemyArmy.push(enemyArmy);
     }
 
     public void showArmyUser() {
@@ -213,7 +205,6 @@ public class GameField implements IGame {
             for (IUnit unit: armyImpl) {
                 outArmyLog += "[" + unit.toString() + "]\n";
             }
-
             System.out.println(outArmyLog);
         }
 
@@ -257,8 +248,14 @@ public class GameField implements IGame {
             System.out.println("You still not render army");
             return false;
         } else {
-            System.out.println("Сделан один ход");
             doTurn(armyImpl, enemyArmyImpl);
+            System.out.println("===================");
+            System.out.println("Ваши соратники: ");
+            showArmyUser();
+            System.out.println("Ваши противники: ");
+            showEnemyArmy();
+            System.out.println("===================");
+
             return true;
         }
     }
