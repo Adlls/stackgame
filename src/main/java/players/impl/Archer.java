@@ -90,6 +90,8 @@ public class Archer extends BaseUnit implements ISpecialAction {
     @Override
     public void takeDanger(double AD) {
         this.HP -= AD;
+        proxyNotification.notificationDieUnity(this);
+
     }
 
     @Override

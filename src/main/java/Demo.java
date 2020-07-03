@@ -9,6 +9,7 @@ import players.impl.decorator.AccouterDecorator;
 import players.impl.decorator.HelmetAccouterDecorator;
 import players.impl.decorator.HorseAccouterDecorator;
 
+import java.awt.*;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 
@@ -23,6 +24,7 @@ public class Demo {
     }
 
     public static void main(String[] args) throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException, NotEnoughCoinsException, IOException {
+
         Logger.getLogger().writeClassInstanceLog(Demo.class);
         Application app = configureApplication();
 

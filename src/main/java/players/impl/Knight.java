@@ -107,5 +107,7 @@ public class Knight extends BaseUnit {
             }
         }
         this.HP -= AD;
+        proxyNotification.notificationDieUnity(this);
+
     }
 }

@@ -2,16 +2,16 @@ RUN GAME
 -------------------------
 CLASS NAME: ARMY.ARMY
 -------------------------
+Name method: createArmy
+param: int arg0
+return type: interface java.util.List
+---------------------- 
 Name method: getMinPrice
 params empty 
 return type: int
 ---------------------- 
 Name method: createEnemyArmy
 param: java.util.List<players.IUnit> arg0
-return type: interface java.util.List
----------------------- 
-Name method: createArmy
-param: int arg0
 return type: interface java.util.List
 ---------------------- 
 Name method: scanPathFactoriesForCurrentUnits
@@ -22,21 +22,16 @@ Name method: getCurrentUnits
 param: java.util.List<players.IUnitFactory> arg0
 return type: void
 ---------------------- 
-date: Fri Jul 03 03:30:35 MSK 2020
+date: Fri Jul 03 11:32:56 MSK 2020
 ---------------------- 
 -------------------------
 CLASS NAME: APPLICATION
 -------------------------
-date: Fri Jul 03 03:30:36 MSK 2020
+date: Fri Jul 03 11:32:56 MSK 2020
 ---------------------- 
 -------------------------
 CLASS NAME: MENU.MENU
 -------------------------
-Name method: createArmy
-param: army.IArmy arg0
-param: int arg1
-return type: interface java.util.List
----------------------- 
 Name method: displayMenu
 param: java.io.BufferedReader arg0
 return type: void
@@ -49,31 +44,22 @@ Name method: printMenu
 params empty 
 return type: void
 ---------------------- 
-Name method: doTurn
-param: java.util.List<players.IUnit> arg0
-param: java.util.List<players.IUnit> arg1
+date: Fri Jul 03 11:32:56 MSK 2020
+---------------------- 
+-------------------------
+CLASS NAME: MENU.MENU
+-------------------------
+Name method: displayMenu
+param: java.io.BufferedReader arg0
 return type: void
 ---------------------- 
-Name method: doTurnToEnd
-param: java.util.List<players.IUnit> arg0
-param: java.util.List<players.IUnit> arg1
+Name method: choosePointMenu
+param: int arg0
 return type: void
 ---------------------- 
-Name method: showArmyUser
+Name method: printMenu
 params empty 
 return type: void
 ---------------------- 
-Name method: showEnemyArmy
-params empty 
-return type: void
----------------------- 
-Name method: turn
-params empty 
-return type: void
----------------------- 
-Name method: turnToEnd
-params empty 
-return type: void
----------------------- 
-date: Fri Jul 03 03:30:36 MSK 2020
+date: Fri Jul 03 11:32:56 MSK 2020
 ---------------------- 
