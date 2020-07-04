@@ -5,6 +5,7 @@ import army.IArmy;
 import army.OneOnOneStrategy;
 import army.WallToWallStrategy;
 import exceptions.NotCreatedArmyException;
+import menu.command.*;
 import players.BaseUnit;
 import players.ISpecialAction;
 import players.IUnit;
@@ -13,7 +14,6 @@ import players.impl.Healer;
 import players.impl.Infantry;
 import players.impl.Wizard;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class GameField implements IGame {
@@ -21,17 +21,31 @@ public class GameField implements IGame {
     private List<BaseUnit> armyImpl;
     private List<BaseUnit> enemyArmyImpl;
     private ContextBattleStrategy contextBattleStrategy;
-    private UndoCommand commandUndoUserArmy;
-    private UndoCommand commandUndoEnemyArmy;
+
+   // private InvokerCommand invokerCommandUserArmy;
+   // private InvokerCommand invokerCommandEnemyArmy;
+
+    private Command undoCommandUserArmy;
+    private Command redoCommandUserArmy;
+    private Command undoCommandEnemyArmy;
+    private Command redoCommandEnemyArmy;
+
+    private ReceiverCommand receiverCommandUserArmy;
+    private ReceiverCommand receiverCommandEnemyArmy;
 
     GameField() {
         logger.Logger.getLogger().writeClassInstanceLog(Menu.class);
         contextBattleStrategy = new ContextBattleStrategy();
         contextBattleStrategy.setBattleTypeStrategy(new OneOnOneStrategy());
-        commandUndoUserArmy = new UndoCommand();
-        commandUndoEnemyArmy = new UndoCommand();
-        commandUndoUserArmy.push(null);
-        commandUndoEnemyArmy.push(null);
+
+        receiverCommandUserArmy = new ReceiverCommand();
+        receiverCommandEnemyArmy = new ReceiverCommand();
+
+        undoCommandUserArmy = new UndoCommand(receiverCommandUserArmy);
+        redoCommandUserArmy = new RedoCommand(receiverCommandUserArmy);
+
+        undoCommandEnemyArmy = new UndoCommand(receiverCommandEnemyArmy);
+        redoCommandEnemyArmy = new RedoCommand(receiverCommandEnemyArmy);
     }
 
     @Override
@@ -48,8 +62,6 @@ public class GameField implements IGame {
             } catch (NotCreatedArmyException e) {
                 e.printStackTrace();
             }
-            //commandUndoUserArmy.push(armyImpl);
-            //commandUndoEnemyArmy.push(enemyArmyImpl);
         }
         else {
             System.out.println("You already render army");
@@ -59,8 +71,8 @@ public class GameField implements IGame {
 
     public void undoArmy() {
         if (armyImpl != null) {
-             armyImpl = commandUndoUserArmy.pop();
-             enemyArmyImpl = commandUndoEnemyArmy.pop();
+            armyImpl = undoCommandUserArmy.execute();
+            enemyArmyImpl = undoCommandEnemyArmy.execute();
             System.out.println("===================");
             System.out.println("Ваши соратники: ");
             showArmyUser();
@@ -180,8 +192,10 @@ public class GameField implements IGame {
     }
 
     public void doTurn(List<BaseUnit> userArmy, List<BaseUnit> enemyArmy) {
-        commandUndoUserArmy.push(userArmy);
-        commandUndoEnemyArmy.push(enemyArmy);
+
+        receiverCommandUserArmy.push(userArmy);
+        receiverCommandEnemyArmy.push(enemyArmy);
+
         int startIndexUserArmy = (int) (Math.random() * (userArmy.size()));
         int endIndexUserArmy = (int) (startIndexUserArmy + Math.random() * (userArmy.size() - startIndexUserArmy));
 
