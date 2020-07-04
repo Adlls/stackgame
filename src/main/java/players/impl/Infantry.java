@@ -1,14 +1,13 @@
 package players.impl;
 
 import exceptions.NotEnoughCoinsException;
-import players.BaseUnit;
 import players.ISpecialAction;
 import players.IUnit;
 import players.impl.decorator.Accouter;
 import players.impl.decorator.AccouterDecorator;
 import players.impl.decorator.HelmetAccouterDecorator;
 import players.impl.decorator.HorseAccouterDecorator;
-
+import players.BaseUnit;
 import java.util.List;
 
 public class Infantry extends BaseUnit implements ISpecialAction {
@@ -35,7 +34,8 @@ public class Infantry extends BaseUnit implements ISpecialAction {
         this.HP = HP;
     }
 
-    public Infantry clone() {
+    @Override
+    public BaseUnit clone() {
         try {
             return new Infantry(this.HP, this.AD, this.DF, COST);
         } catch (NotEnoughCoinsException e) {
@@ -98,7 +98,7 @@ public class Infantry extends BaseUnit implements ISpecialAction {
     }
 
     @Override
-    public void doSpecialAction(List<IUnit> unitsArmy) {
+    public void doSpecialAction(List<BaseUnit> unitsArmy) {
             for (int i = 0; i < unitsArmy.size(); i++) {
                 if (unitsArmy.get(i).equals(this) && (i - 1) >= 0 && (i + 1) <= unitsArmy.size() - 1) {
                     if (unitsArmy.get(i - 1) instanceof Knight) {

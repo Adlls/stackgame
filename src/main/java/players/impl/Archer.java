@@ -1,10 +1,9 @@
 package players.impl;
 
 import exceptions.NotEnoughCoinsException;
-import players.BaseUnit;
 import players.ISpecialAction;
 import players.IUnit;
-
+import players.BaseUnit;
 import java.util.List;
 
 public class Archer extends BaseUnit implements ISpecialAction {
@@ -41,7 +40,8 @@ public class Archer extends BaseUnit implements ISpecialAction {
                 '}';
     }
 
-    public Archer clone() {
+    @Override
+    public BaseUnit clone() {
         try {
             return new Archer(this.HP, this.AD, this.DF, COST);
         } catch (NotEnoughCoinsException e) {
@@ -95,7 +95,7 @@ public class Archer extends BaseUnit implements ISpecialAction {
     }
 
     @Override
-    public void doSpecialAction(List<IUnit> unitsArmy) {
+    public void doSpecialAction(List<BaseUnit> unitsArmy) {
         int maxIndexArmy = unitsArmy.size() - 1;
         int targetIndexShot =  (int) (Math.random() * 6);
 

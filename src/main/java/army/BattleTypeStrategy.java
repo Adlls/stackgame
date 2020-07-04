@@ -1,9 +1,10 @@
 package army;
 
+import players.BaseUnit;
 import players.IUnit;
 
 import java.util.List;
 
 public interface BattleTypeStrategy {
-    void createTypeBattle(List<IUnit> userArmy, List<IUnit> enemyArmy, IUnit currentUserUnit, IUnit currentEnemyUnit);
+    void createTypeBattle(List<BaseUnit> userArmy, List<BaseUnit> enemyArmy, BaseUnit currentUserUnit, BaseUnit currentEnemyUnit);
 }

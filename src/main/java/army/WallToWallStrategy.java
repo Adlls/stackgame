@@ -1,5 +1,6 @@
 package army;
 
+import players.BaseUnit;
 import players.IUnit;
 
 import java.util.List;
@@ -7,7 +8,7 @@ import java.util.List;
 public class WallToWallStrategy implements BattleTypeStrategy {
 
     @Override
-    public void createTypeBattle(List<IUnit> userArmy, List<IUnit> enemyArmy, IUnit currentUserUnit, IUnit currentEnemyUnit) {
+    public void createTypeBattle(List<BaseUnit> userArmy, List<BaseUnit> enemyArmy, BaseUnit currentUserUnit, BaseUnit currentEnemyUnit) {
 
         //attack to enemy
         System.out.println("============================");

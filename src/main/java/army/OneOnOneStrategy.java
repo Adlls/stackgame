@@ -1,5 +1,6 @@
 package army;
 
+import players.BaseUnit;
 import players.IUnit;
 
 import java.util.List;
@@ -7,7 +8,7 @@ import java.util.List;
 public class OneOnOneStrategy implements BattleTypeStrategy {
 
     @Override
-    public void createTypeBattle(List<IUnit> userArmy, List<IUnit> enemyArmy, IUnit currentUserUnit, IUnit currentEnemyUnit) {
+    public void createTypeBattle(List<BaseUnit> userArmy, List<BaseUnit> enemyArmy, BaseUnit currentUserUnit, BaseUnit currentEnemyUnit) {
 
         System.out.println("==================================");
         System.out.println("user unit: " + currentUserUnit.toString() + " vs enemy unit: " + currentEnemyUnit.toString());
@@ -29,13 +30,13 @@ public class OneOnOneStrategy implements BattleTypeStrategy {
         if (currentUserUnit.getHP() <= 0) {
             userArmy.remove(userArmy.size() - 1);
         } else {
-            IUnit swapUnit = userArmy.remove(userArmy.size() - 1);
+            BaseUnit swapUnit = userArmy.remove(userArmy.size() - 1);
             userArmy.add(0, swapUnit);
         }
         if (currentEnemyUnit.getHP() <= 0) {
             enemyArmy.remove(0);
         } else {
-            IUnit swapUnit = enemyArmy.remove(0);
+            BaseUnit swapUnit = enemyArmy.remove(0);
             enemyArmy.add(swapUnit);
         }
 

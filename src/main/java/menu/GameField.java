@@ -5,6 +5,7 @@ import army.IArmy;
 import army.OneOnOneStrategy;
 import army.WallToWallStrategy;
 import exceptions.NotCreatedArmyException;
+import players.BaseUnit;
 import players.ISpecialAction;
 import players.IUnit;
 import players.impl.Archer;
@@ -12,24 +13,29 @@ import players.impl.Healer;
 import players.impl.Infantry;
 import players.impl.Wizard;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class GameField implements IGame {
 
-    private List<IUnit> armyImpl;
-    private List<IUnit> enemyArmyImpl;
+    private List<BaseUnit> armyImpl;
+    private List<BaseUnit> enemyArmyImpl;
     private ContextBattleStrategy contextBattleStrategy;
-    private Command commandUndoUserArmy;
-    private Command commandUndoEnemyArmy;
+    private UndoCommand commandUndoUserArmy;
+    private UndoCommand commandUndoEnemyArmy;
 
     GameField() {
         logger.Logger.getLogger().writeClassInstanceLog(Menu.class);
         contextBattleStrategy = new ContextBattleStrategy();
         contextBattleStrategy.setBattleTypeStrategy(new OneOnOneStrategy());
+        commandUndoUserArmy = new UndoCommand();
+        commandUndoEnemyArmy = new UndoCommand();
+        commandUndoUserArmy.push(null);
+        commandUndoEnemyArmy.push(null);
     }
 
     @Override
-    public List<IUnit> createArmy(IArmy army, int price) {
+    public List<BaseUnit> createArmy(IArmy army, int price) {
         if (armyImpl == null) {
             armyImpl = army.createArmy(price);
             System.out.println("Army created");
@@ -42,22 +48,25 @@ public class GameField implements IGame {
             } catch (NotCreatedArmyException e) {
                 e.printStackTrace();
             }
-            commandUndoUserArmy = new UndoCommand(armyImpl);
-            commandUndoEnemyArmy = new UndoCommand(enemyArmyImpl);
-            commandUndoUserArmy.push(armyImpl);
-            commandUndoEnemyArmy.push(enemyArmyImpl);
+            //commandUndoUserArmy.push(armyImpl);
+            //commandUndoEnemyArmy.push(enemyArmyImpl);
         }
         else {
             System.out.println("You already render army");
         }
-
         return armyImpl;
     }
 
     public void undoArmy() {
         if (armyImpl != null) {
-           armyImpl = commandUndoUserArmy.pop();
-           enemyArmyImpl = commandUndoEnemyArmy.pop();
+             armyImpl = commandUndoUserArmy.pop();
+             enemyArmyImpl = commandUndoEnemyArmy.pop();
+            System.out.println("===================");
+            System.out.println("Ваши соратники: ");
+            showArmyUser();
+            System.out.println("Ваши противники: ");
+            showEnemyArmy();
+            System.out.println("===================");
         } else {
             System.out.println("army is empty");
         }
@@ -86,14 +95,14 @@ public class GameField implements IGame {
     }
 
     private void choiceSpecialActions(
-            List<IUnit> userArmy,
-            List<IUnit> enemyArmy,
+            List<BaseUnit> userArmy,
+            List<BaseUnit> enemyArmy,
             int startIndexUserArmy,
             int endIndexUserArmy,
             int startIndexEnemyArmy,
             int endIndexEnemyArmy,
-            IUnit currentUserUnit,
-            IUnit currentEnemyUnit) {
+            BaseUnit currentUserUnit,
+            BaseUnit currentEnemyUnit) {
         //choice specialAction for userArmy
         for (int i = startIndexUserArmy; i < endIndexUserArmy; i++) {
             if (userArmy.get(i) instanceof ISpecialAction && !userArmy.get(i).equals(currentUserUnit)) {
@@ -123,7 +132,7 @@ public class GameField implements IGame {
                 if (userArmy.get(i) instanceof Infantry) {
                     ((ISpecialAction) userArmy.get(i)).doSpecialAction(userArmy);
                     System.out.println("==================================");
-                    System.out.println("Ваши соратники оделись!");
+                    System.out.println("Ваши соратники вооружились!");
                     System.out.println("==================================");
 
                 }
@@ -138,7 +147,7 @@ public class GameField implements IGame {
                 if (enemyArmy.get(i) instanceof Wizard) {
                     ((ISpecialAction) enemyArmy.get(i)).doSpecialAction(enemyArmy);
                     System.out.println("==================================");
-                    System.out.println("Волшебники противников склонировали своих бойцов!");
+                    System.out.println("Противники склонировали своих бойцов!");
                     System.out.println("==================================");
                 }
 
@@ -154,7 +163,7 @@ public class GameField implements IGame {
                 if (enemyArmy.get(i) instanceof Healer) {
                     ((Healer) enemyArmy.get(i)).doSpecialAction(enemyArmy);
                     System.out.println("==================================");
-                    System.out.println("Противники излечили своих товарищей!");
+                    System.out.println("Противники излечились!");
                     System.out.println("==================================");
 
                 }
@@ -162,7 +171,7 @@ public class GameField implements IGame {
                 if (enemyArmy.get(i) instanceof Infantry) {
                     ((Infantry) enemyArmy.get(i)).doSpecialAction(enemyArmy);
                     System.out.println("==================================");
-                    System.out.println("Противники оделись!");
+                    System.out.println("Противники вооружились!");
                     System.out.println("==================================");
 
                 }
@@ -170,17 +179,17 @@ public class GameField implements IGame {
         }
     }
 
-
-    public void doTurn(List<IUnit> userArmy, List<IUnit> enemyArmy) {
-
+    public void doTurn(List<BaseUnit> userArmy, List<BaseUnit> enemyArmy) {
+        commandUndoUserArmy.push(userArmy);
+        commandUndoEnemyArmy.push(enemyArmy);
         int startIndexUserArmy = (int) (Math.random() * (userArmy.size()));
         int endIndexUserArmy = (int) (startIndexUserArmy + Math.random() * (userArmy.size() - startIndexUserArmy));
 
         int startIndexEnemyArmy = (int) (Math.random() * (enemyArmy.size()));
         int endIndexEnemyArmy = (int) (startIndexEnemyArmy +  Math.random() * (enemyArmy.size() - startIndexEnemyArmy));
 
-        IUnit currentUserUnit = userArmy.get(userArmy.size() - 1);
-        IUnit currentEnemyUnit = enemyArmy.get(0);
+        BaseUnit currentUserUnit = userArmy.get(userArmy.size() - 1);
+        BaseUnit currentEnemyUnit = enemyArmy.get(0);
 
         choiceSpecialActions(
                 userArmy,
@@ -193,8 +202,6 @@ public class GameField implements IGame {
                 currentEnemyUnit);
 
         contextBattleStrategy.executeTypeBattle(userArmy, enemyArmy, currentUserUnit, currentEnemyUnit);
-        commandUndoUserArmy.push(userArmy);
-        commandUndoEnemyArmy.push(enemyArmy);
     }
 
     public void showArmyUser() {
@@ -222,7 +229,7 @@ public class GameField implements IGame {
         }
     }
 
-    public void doTurnToEnd(List<IUnit> userArmy, List<IUnit> enemyArmy) {
+    public void doTurnToEnd(List<BaseUnit> userArmy, List<BaseUnit> enemyArmy) {
         while (userArmy.size() != 0 && enemyArmy.size() != 0) {
             doTurn(userArmy, enemyArmy);
             try {

@@ -4,6 +4,6 @@ import exceptions.NotEnoughCoinsException;
 
 //abstract factory
 public  interface IUnitFactory {
-    IUnit createUnit(int maxPrice) throws NotEnoughCoinsException;
+    BaseUnit createUnit(int maxPrice) throws NotEnoughCoinsException;
 
 }

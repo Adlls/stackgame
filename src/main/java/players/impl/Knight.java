@@ -1,7 +1,7 @@
 package players.impl;
-
-import exceptions.NotEnoughCoinsException;
 import players.BaseUnit;
+import exceptions.NotEnoughCoinsException;
+import players.IUnit;
 
 public class Knight extends BaseUnit {
 
@@ -46,7 +46,9 @@ public class Knight extends BaseUnit {
         }
     }
      */
-    public Knight clone() {
+
+    @Override
+    public BaseUnit clone() {
         try {
             return new Knight(this.HP, this.AD, this.DF, COST);
         } catch (NotEnoughCoinsException e) {

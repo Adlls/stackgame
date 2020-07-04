@@ -1,10 +1,10 @@
 package players;
 
-import exceptions.NotEnoughCoinsException;
-import players.impl.ProxyNotification;
+        import exceptions.NotEnoughCoinsException;
+        import players.impl.ProxyNotification;
 
-import java.util.ArrayList;
-import java.util.List;
+        import java.util.ArrayList;
+        import java.util.List;
 
 public abstract class BaseUnit implements IUnit {
     protected static int COST;
@@ -14,8 +14,11 @@ public abstract class BaseUnit implements IUnit {
         if (price < COST) throw new NotEnoughCoinsException();
     }
 
+    public abstract BaseUnit clone();
+
     @Override
     public void putОn(String wear) {
         wears.add(wear);
     }
+
 }

@@ -1,10 +1,9 @@
 package players.impl;
 
 import exceptions.NotEnoughCoinsException;
-import players.BaseUnit;
 import players.ISpecialAction;
 import players.IUnit;
-
+import players.BaseUnit;
 import java.util.List;
 
 public class Wizard extends BaseUnit implements ISpecialAction {
@@ -12,6 +11,7 @@ public class Wizard extends BaseUnit implements ISpecialAction {
     private double HP;
     private double AD;
     private double DF;
+    private int price;
 
     {
         HP = 100;
@@ -23,6 +23,15 @@ public class Wizard extends BaseUnit implements ISpecialAction {
 
     public Wizard(int price) throws NotEnoughCoinsException {
         super(price);
+    }
+
+
+    public Wizard(double HP, double AD, double DF, int price) throws NotEnoughCoinsException {
+        super(price);
+        this.HP = HP;
+        this.AD = AD;
+        this.DF = DF;
+        this.price = price;
     }
 
 
@@ -78,7 +87,17 @@ public class Wizard extends BaseUnit implements ISpecialAction {
     }
 
     @Override
-    public void doSpecialAction(List<IUnit> unitsArmy) {
+    public BaseUnit clone() {
+        try {
+            return new Wizard(this.HP, this.AD, this.DF, COST);
+        } catch (NotEnoughCoinsException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
+    public void doSpecialAction(List<BaseUnit> unitsArmy) {
         for (int i = 0; i < unitsArmy.size(); i++) {
             if (unitsArmy.get(i).equals(this)) {
                 if ((i + 1 <= unitsArmy.size() - 1)) {

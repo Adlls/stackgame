@@ -42,7 +42,8 @@ public class Healer extends BaseUnit implements ISpecialAction {
     }
 
 
-    public Healer clone() {
+    @Override
+    public BaseUnit clone() {
         try {
             return new Healer(this.HP, this.AD, this.DF, COST);
         } catch (NotEnoughCoinsException e) {
@@ -93,7 +94,7 @@ public class Healer extends BaseUnit implements ISpecialAction {
     }
 
     @Override
-    public void doSpecialAction(List<IUnit> unitsArmy) {
+    public void doSpecialAction(List<BaseUnit> unitsArmy) {
             for (int i = 0; i < unitsArmy.size(); i++) {
                 if (unitsArmy.get(i).equals(this)) {
                     if (i + 1 <= unitsArmy.size() - 1) unitsArmy.get(i + 1).setHP(10);

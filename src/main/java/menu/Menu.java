@@ -37,6 +37,7 @@ public class Menu {
         switch (point) {
             case 0:
                 System.out.println("bye");
+                System.exit(0);
                 break;
             case 1:
                 gameField.createArmy(army, coins);

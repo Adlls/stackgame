@@ -10,24 +10,24 @@ Name method: getCurrentUnits
 param: java.util.List<players.IUnitFactory> arg0
 return type: void
 ---------------------- 
-Name method: getMinPrice
-params empty 
-return type: int
----------------------- 
-Name method: createEnemyArmy
-param: java.util.List<players.IUnit> arg0
-return type: interface java.util.List
----------------------- 
 Name method: createArmy
 param: int arg0
 return type: interface java.util.List
 ---------------------- 
-date: Fri Jul 03 15:47:08 MSK 2020
+Name method: createEnemyArmy
+param: java.util.List<players.BaseUnit> arg0
+return type: interface java.util.List
+---------------------- 
+Name method: getMinPrice
+params empty 
+return type: int
+---------------------- 
+date: Sat Jul 04 14:19:55 MSK 2020
 ---------------------- 
 -------------------------
 CLASS NAME: APPLICATION
 -------------------------
-date: Fri Jul 03 15:47:08 MSK 2020
+date: Sat Jul 04 14:19:55 MSK 2020
 ---------------------- 
 -------------------------
 CLASS NAME: MENU.MENU
@@ -44,7 +44,7 @@ Name method: printMenu
 params empty 
 return type: void
 ---------------------- 
-date: Fri Jul 03 15:47:08 MSK 2020
+date: Sat Jul 04 14:19:55 MSK 2020
 ---------------------- 
 -------------------------
 CLASS NAME: MENU.MENU
@@ -61,5 +61,5 @@ Name method: printMenu
 params empty 
 return type: void
 ---------------------- 
-date: Fri Jul 03 15:47:08 MSK 2020
+date: Sat Jul 04 14:19:55 MSK 2020
 ---------------------- 

@@ -2,6 +2,7 @@ package army;
 
 import exceptions.NotCreatedArmyException;
 import exceptions.NotEnoughCoinsException;
+import players.BaseUnit;
 import players.IUnit;
 import players.IUnitFactory;
 import java.io.File;
@@ -49,9 +50,9 @@ public class Army implements IArmy {
 
 
     @Override
-    public List<IUnit> createEnemyArmy(List<IUnit> armyUser) throws NotCreatedArmyException {
+    public List<BaseUnit> createEnemyArmy(List<BaseUnit> armyUser) throws NotCreatedArmyException {
         int randomIndex;
-        List<IUnit> enemyArmy;
+        List<BaseUnit> enemyArmy;
 
 
         if (armyUser == null || armyUser.size() == 0) {
@@ -62,7 +63,7 @@ public class Army implements IArmy {
         for (int i = 0; i < armyUser.size(); i++) {
             randomIndex = (int) (Math.random() * (currentUnits.size()));
             try {
-                IUnit unit = currentUnits.get(randomIndex).createUnit(100000000);
+                BaseUnit unit = currentUnits.get(randomIndex).createUnit(100000000);
                 enemyArmy.add(unit);
             } catch (NotEnoughCoinsException e) {
 
@@ -72,14 +73,14 @@ public class Army implements IArmy {
     }
 
     @Override
-    public List<IUnit> createArmy(int price) {
-        List<IUnit> army = new ArrayList<>();
+    public List<BaseUnit> createArmy(int price) {
+        List<BaseUnit> army = new ArrayList<>();
         int sizeUnitFactory = currentUnits.size();
         int randomIndex;
         while (price >= getMinPrice()) {
             randomIndex = (int) (Math.random() * (sizeUnitFactory));
             try {
-                IUnit unit = currentUnits.get(randomIndex).createUnit(price);
+                BaseUnit unit = currentUnits.get(randomIndex).createUnit(price);
                 army.add(unit);
                 price -= unit.getCost();
             } catch (NotEnoughCoinsException ex) {
