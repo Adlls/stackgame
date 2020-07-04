@@ -7,11 +7,95 @@ package players;
         import java.util.List;
 
 public abstract class BaseUnit implements IUnit {
+
+    protected double HP;
+    protected double AD;
+    protected double DF;
+    protected int price;
     protected static int COST;
+
     protected List<String> wears = new ArrayList<>();
+
     protected ProxyNotification proxyNotification = new ProxyNotification();
     public BaseUnit(int price) throws NotEnoughCoinsException {
         if (price < COST) throw new NotEnoughCoinsException();
+    }
+
+    public List<String> getWears() {
+        return wears;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder output = new StringBuilder(this.getClass().getSimpleName()+"{" +
+                "HP=" + HP +
+                ", AD=" + AD +
+                ", DF=" + DF +
+                '}');
+        if (!wears.isEmpty()) {
+            output.append(" Одежда:");
+            for (String wear : wears)
+                output.append(" ").append(wear).append(",");
+        }
+        output.delete(output.length() - 1, output.length());
+        return output.toString();
+    }
+
+    @Override
+    public double getCost() {
+        return COST;
+    }
+
+    @Override
+    public double getHP() {
+        return HP;
+    }
+
+    @Override
+    public void setHP(double HP) {
+        this.HP = HP;
+        if (this.HP > 100) this.HP = 100;
+        if (this.HP < 0) this.HP = 0;
+    }
+
+    @Override
+    public double getAD() {
+        return AD;
+    }
+
+    @Override
+    public void setAD(double AD) {
+        this.AD = AD;
+    }
+
+    @Override
+    public double getDF() {
+        return DF;
+    }
+
+    @Override
+    public void setDF(double DF) {
+        this.DF = DF;
+        if (wears.contains("Броня")) this.DF += 10;
+        if (wears.contains("Лошадь")) this.DF += 15;
+        if (wears.contains("Шлем")) this.DF += 10;
+    }
+
+    @Override
+    public void takeDanger(double AD) {
+        int randomIndexWear = (int) (Math.random() * 4);
+        int randomDestroyWear = (int) (Math.random() * 15);
+        if (randomIndexWear <= wears.size() - 1) {
+            if (randomDestroyWear >= 13) {
+                String wear = wears.remove(randomIndexWear);
+                if (wear.equals("Броня")) this.DF -= 10;
+                if (wear.equals("Лошадь")) this.DF -= 15;
+                if (wear.equals("Шлем")) this.DF -= 10;
+            }
+        }
+
+        this.HP -= (AD* DF/100);
+        proxyNotification.notificationDieUnity(this);
     }
 
     public abstract BaseUnit clone();
