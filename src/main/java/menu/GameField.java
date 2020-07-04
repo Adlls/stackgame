@@ -71,6 +71,8 @@ public class GameField implements IGame {
 
     public void undoArmy() {
         if (armyImpl != null) {
+            receiverCommandUserArmy.pushRedoArmy(armyImpl);
+            receiverCommandEnemyArmy.pushRedoArmy(enemyArmyImpl);
             armyImpl = undoCommandUserArmy.execute();
             enemyArmyImpl = undoCommandEnemyArmy.execute();
             System.out.println("===================");
@@ -82,6 +84,17 @@ public class GameField implements IGame {
         } else {
             System.out.println("army is empty");
         }
+    }
+
+    public void redoArmy() {
+            armyImpl = redoCommandUserArmy.execute();
+            enemyArmyImpl = redoCommandEnemyArmy.execute();
+            System.out.println("===================");
+            System.out.println("Ваши соратники: ");
+            showArmyUser();
+            System.out.println("Ваши противники: ");
+            showEnemyArmy();
+            System.out.println("===================");
     }
 
     public boolean setOneOnOneStrategy() {
@@ -193,8 +206,8 @@ public class GameField implements IGame {
 
     public void doTurn(List<BaseUnit> userArmy, List<BaseUnit> enemyArmy) {
 
-        receiverCommandUserArmy.push(userArmy);
-        receiverCommandEnemyArmy.push(enemyArmy);
+        receiverCommandUserArmy.pushUndoArmy(userArmy);
+        receiverCommandEnemyArmy.pushUndoArmy(enemyArmy);
 
         int startIndexUserArmy = (int) (Math.random() * (userArmy.size()));
         int endIndexUserArmy = (int) (startIndexUserArmy + Math.random() * (userArmy.size() - startIndexUserArmy));
