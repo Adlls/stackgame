@@ -69,6 +69,9 @@ public class Menu {
             case 9:
                 gameField.redoArmy();
                 displayMenu(reader);
+            case 10:
+                gameField.setThreeByThreeStrategy();
+                displayMenu(reader);
             default:
                 System.out.println("Incorrect point menu. Please try again.");
                 displayMenu(reader);
@@ -86,6 +89,7 @@ public class Menu {
         System.out.println("7. One on one strategy (default)");
         System.out.println("8. Undo");
         System.out.println("9. Redo");
+        System.out.println("10. Three by three strategy");
     }
 
 }

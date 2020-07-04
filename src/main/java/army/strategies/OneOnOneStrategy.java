@@ -1,7 +1,6 @@
-package army;
+package army.strategies;
 
 import players.BaseUnit;
-import players.IUnit;
 
 import java.util.List;
 
@@ -26,7 +25,7 @@ public class OneOnOneStrategy implements BattleTypeStrategy {
             System.out.println("==================================");
         }
 
-        //swap units and check for hp = 0
+        //swap units and check for hp == 0
         if (currentUserUnit.getHP() <= 0) {
             userArmy.remove(userArmy.size() - 1);
         } else {

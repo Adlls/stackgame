@@ -1,4 +1,4 @@
-package army;
+package army.strategies;
 
 import players.BaseUnit;
 import players.IUnit;

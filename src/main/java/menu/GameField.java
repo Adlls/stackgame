@@ -1,9 +1,10 @@
 package menu;
 
-import army.ContextBattleStrategy;
+import army.strategies.ContextBattleStrategy;
 import army.IArmy;
-import army.OneOnOneStrategy;
-import army.WallToWallStrategy;
+import army.strategies.OneOnOneStrategy;
+import army.strategies.ThreeByThreeStrategy;
+import army.strategies.WallToWallStrategy;
 import exceptions.NotCreatedArmyException;
 import menu.command.*;
 import players.BaseUnit;
@@ -115,6 +116,17 @@ public class GameField implements IGame {
         } else {
             contextBattleStrategy.setBattleTypeStrategy(new WallToWallStrategy());
             System.out.println("Strategy wall to wall activated");
+            return true;
+        }
+    }
+
+    public boolean setThreeByThreeStrategy() {
+        if (armyImpl == null) {
+            System.out.println("You still not generate army");
+            return false;
+        } else {
+            contextBattleStrategy.setBattleTypeStrategy(new ThreeByThreeStrategy());
+            System.out.println("Strategy three by three activated");
             return true;
         }
     }
