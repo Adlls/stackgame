@@ -17,6 +17,7 @@ public abstract class BaseUser implements IUser {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        if (coins < 500) coins = 500;
     }
 
 
@@ -52,7 +53,6 @@ public abstract class BaseUser implements IUser {
 
     }
 
-
     @Override
     public int getProgressLevel() {
         return levelProgress;
@@ -74,7 +74,7 @@ public abstract class BaseUser implements IUser {
     public void levelUp() {
         if (levelProgress >= 100) {
             this.level++;
-            levelProgress = 0;
+            levelProgress = levelProgress - 100;
             setDataUser();
         }
     }

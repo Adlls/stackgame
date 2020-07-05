@@ -43,14 +43,22 @@ public class Menu {
         }
     }
 
-    private void choosePointMenu(int point) {
+    private void choosePointMenu(int point) throws IOException {
         switch (point) {
             case 0:
                 System.out.println("bye");
                 System.exit(0);
                 break;
             case 1:
-                gameField.createArmy(army, user.getCoins());
+                System.out.println("Выберите количество коинсов: ");
+                int coins = Integer.parseInt(reader.readLine().trim());
+                System.out.println(coins);
+                if (coins > user.getCoins()) {
+                    System.out.println("У вас не хватает коинсов");
+                } else {
+                    gameField.createArmy(army, user.getCoins());
+                    user.setCoins(user.getCoins() - coins);
+                }
                 displayMenu(reader);
                 break;
             case 2:
