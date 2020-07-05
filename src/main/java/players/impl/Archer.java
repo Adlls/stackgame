@@ -36,6 +36,11 @@ public class Archer extends BaseUnit implements ISpecialAction {
         return null;
     }
 
+    private void checkIfUnitDie(List<BaseUnit> army, int targetIndexShot) {
+        if (army.get(targetIndexShot).getHP() <= 0) {
+            army.remove(targetIndexShot);
+        }
+    }
 
     @Override
     public void doSpecialAction(List<BaseUnit> unitsArmy) {
@@ -44,9 +49,11 @@ public class Archer extends BaseUnit implements ISpecialAction {
 
         if (targetIndexShot < maxIndexArmy) {
             unitsArmy.get(targetIndexShot).takeDanger(SpecialStrengthGet());
+            checkIfUnitDie(unitsArmy, targetIndexShot);
         } else {
             try {
                 unitsArmy.get((targetIndexShot + 1) % (maxIndexArmy + 1)).takeDanger(SpecialStrengthGet());
+                checkIfUnitDie(unitsArmy, (targetIndexShot + 1) % (maxIndexArmy + 1));
             } catch (ArithmeticException e) {
             }
         }

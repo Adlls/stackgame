@@ -25,8 +25,8 @@ public class ThreeByThreeStrategy implements BattleTypeStrategy {
             //attack to enemy
             for (int i = 0; i < 3; i++) {
                 if (userArmy.get(userArmy.size() - 1 - i).getHP() >= 0) {
-                    enemyArmy.get(i).takeDanger(userArmy.get(userArmy.size() - 1 - i).getAD());
-                    System.out.println(userArmy.get(userArmy.size() - 1) + " наносит удар!");
+                        enemyArmy.get(i).takeDanger(userArmy.get(userArmy.size() - 1 - i).getAD());
+                        System.out.println(userArmy.get(userArmy.size() - 1) + " наносит удар!");
                 }
             }
 
@@ -51,9 +51,9 @@ public class ThreeByThreeStrategy implements BattleTypeStrategy {
                     userArmy.remove(i);
                 }
             }
-            for (int i = 0; i < enemyArmy.size(); i++) {
-                if (enemyArmy.get(i).getHP() <= 0) {
-                    enemyArmy.remove(i);
+            for (int j = 0; j < enemyArmy.size(); j++) {
+                if (enemyArmy.get(j).getHP() <= 0) {
+                    enemyArmy.remove(j);
                 }
             }
         } else {

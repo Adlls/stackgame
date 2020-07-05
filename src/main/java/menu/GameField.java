@@ -156,16 +156,16 @@ public class GameField implements IGame {
 
                 if (userArmy.get(i) instanceof Archer) {
                     ((ISpecialAction) userArmy.get(i)).doSpecialAction(enemyArmy);
-                    MessageGame.setMessage("Ваши лучники воспользовались стрелами!");
+                    MessageGame.setMessage("Ваши лучники попытались воспользоваться стрелами!");
                 }
                 if (userArmy.get(i) instanceof Healer) {
                     ((ISpecialAction) userArmy.get(i)).doSpecialAction(userArmy);
-                    MessageGame.setMessage("Ваши соратники излечились!");
+                    MessageGame.setMessage("Ваши соратники попытались излечиться!");
                 }
 
                 if (userArmy.get(i) instanceof Infantry) {
                     ((ISpecialAction) userArmy.get(i)).doSpecialAction(userArmy);
-                    MessageGame.setMessage("Ваши соратники вооружились!");
+                    MessageGame.setMessage("Ваши соратники попытались вооружиться!");
 
                 }
 
@@ -174,28 +174,30 @@ public class GameField implements IGame {
 
         //choice specialAction for enemyArmy
         for (int i = startIndexEnemyArmy; i < endIndexEnemyArmy; i++) {
-            if (enemyArmy.get(i) instanceof ISpecialAction && !enemyArmy.get(i).equals(currentEnemyUnit)) {
+            try {
+                if (enemyArmy.get(i) instanceof ISpecialAction && !enemyArmy.get(i).equals(currentEnemyUnit)) {
 
-                if (enemyArmy.get(i) instanceof Wizard) {
-                    ((ISpecialAction) enemyArmy.get(i)).doSpecialAction(enemyArmy);
-                    MessageGame.setMessage("Противники склонировали своих бойцов!");
-                }
+                    if (enemyArmy.get(i) instanceof Wizard) {
+                        ((ISpecialAction) enemyArmy.get(i)).doSpecialAction(enemyArmy);
+                        MessageGame.setMessage("Противники попытались склонировать своих бойцов!");
+                    }
 
 
-                if (enemyArmy.get(i) instanceof Archer) {
-                    ((Archer) enemyArmy.get(i)).doSpecialAction(userArmy);
-                    MessageGame.setMessage("Противники воспользовались лучниками!");
-                }
-                if (enemyArmy.get(i) instanceof Healer) {
-                    ((Healer) enemyArmy.get(i)).doSpecialAction(enemyArmy);
-                    MessageGame.setMessage("Противники излечились!");
-                }
+                    if (enemyArmy.get(i) instanceof Archer) {
+                        ((Archer) enemyArmy.get(i)).doSpecialAction(userArmy);
+                        MessageGame.setMessage("Противники попытались воспользоваться лучниками!");
+                    }
+                    if (enemyArmy.get(i) instanceof Healer) {
+                        ((Healer) enemyArmy.get(i)).doSpecialAction(enemyArmy);
+                        MessageGame.setMessage("Противники пытались излечиться!");
+                    }
 
-                if (enemyArmy.get(i) instanceof Infantry) {
-                    ((Infantry) enemyArmy.get(i)).doSpecialAction(enemyArmy);
-                    MessageGame.setMessage("Противники вооружились!");
+                    if (enemyArmy.get(i) instanceof Infantry) {
+                        ((Infantry) enemyArmy.get(i)).doSpecialAction(enemyArmy);
+                        MessageGame.setMessage("Противники попытались вооружиться!");
+                    }
                 }
-            }
+            } catch(Exception e) { }
         }
     }
 
