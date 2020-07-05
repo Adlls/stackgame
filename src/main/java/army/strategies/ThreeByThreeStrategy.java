@@ -1,5 +1,6 @@
 package army.strategies;
 
+import logger.MessageGame;
 import players.BaseUnit;
 
 import java.util.ArrayList;
@@ -18,7 +19,7 @@ public class ThreeByThreeStrategy implements BattleTypeStrategy {
     public void createTypeBattle(List<BaseUnit> userArmy, List<BaseUnit> enemyArmy, BaseUnit currentUserUnit, BaseUnit currentEnemyUnit) {
 
         if (userArmy.size() >= 3 && enemyArmy.size() >= 3) {
-            System.out.println("Тройки начали сражаться!");
+            MessageGame.setMessage("Тройки начали сражаться!");
             System.out.println(" ");
             System.out.println("Тройка user army: ");
             //attack to enemy
@@ -39,6 +40,7 @@ public class ThreeByThreeStrategy implements BattleTypeStrategy {
                 indexEnemyArmy++;
             }
 
+            System.out.println(" ");
             //remove the dead units
             for (int i = 0; i < userArmy.size(); i++) {
                 if (userArmy.get(i).getHP() <= 0) {

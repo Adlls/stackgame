@@ -1,5 +1,6 @@
 package army.strategies;
 
+import logger.MessageGame;
 import players.BaseUnit;
 
 import java.util.List;
@@ -9,20 +10,14 @@ public class OneOnOneStrategy implements BattleTypeStrategy {
     @Override
     public void createTypeBattle(List<BaseUnit> userArmy, List<BaseUnit> enemyArmy, BaseUnit currentUserUnit, BaseUnit currentEnemyUnit) {
 
-        System.out.println("==================================");
-        System.out.println("user unit: " + currentUserUnit.toString() + " vs enemy unit: " + currentEnemyUnit.toString());
-        System.out.println("================================== \n");
+        MessageGame.setMessage("user unit: " + currentUserUnit.toString() + " vs enemy unit: " + currentEnemyUnit.toString());
 
-        System.out.println("==================================");
-        System.out.println("Делает ход user unit: " +  currentUserUnit.toString());
+        MessageGame.setMessage("Делает ход user unit: " +  currentUserUnit.toString());
         currentEnemyUnit.takeDanger(currentUserUnit.getAD());
 
-        System.out.println("==================================");
         if (currentEnemyUnit.getHP() > 0) {
-            System.out.println("==================================");
-            System.out.println("Делает ход enemy unit: " + currentEnemyUnit.toString());
+            MessageGame.setMessage("Делает ход enemy unit: " + currentEnemyUnit.toString());
             currentUserUnit.takeDanger(currentEnemyUnit.getAD());
-            System.out.println("==================================");
         }
 
         //swap units and check for hp == 0

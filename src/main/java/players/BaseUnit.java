@@ -3,6 +3,7 @@ package players;
         import exceptions.NotEnoughCoinsException;
         import players.impl.ProxyNotification;
 
+        import java.text.DecimalFormat;
         import java.util.ArrayList;
         import java.util.List;
 
@@ -13,6 +14,7 @@ public abstract class BaseUnit implements IUnit {
     protected double DF;
     protected int price;
     protected static int COST;
+    public static boolean notificationIsEnabled;
 
     protected List<String> wears = new ArrayList<>();
 
@@ -25,10 +27,12 @@ public abstract class BaseUnit implements IUnit {
         return wears;
     }
 
+
+
     @Override
     public String toString() {
         StringBuilder output = new StringBuilder(this.getClass().getSimpleName()+"{" +
-                "HP=" + HP +
+                "HP=" + new DecimalFormat("0.#").format(HP) +
                 ", AD=" + AD +
                 ", DF=" + DF +
                 '}');
@@ -36,8 +40,9 @@ public abstract class BaseUnit implements IUnit {
             output.append(" Одежда:");
             for (String wear : wears)
                 output.append(" ").append(wear).append(",");
+
+            output.delete(output.length() - 1, output.length());
         }
-        output.delete(output.length() - 1, output.length());
         return output.toString();
     }
 
@@ -94,8 +99,10 @@ public abstract class BaseUnit implements IUnit {
             }
         }
 
-        this.HP -= (AD* DF/100);
-        proxyNotification.notificationDieUnity(this);
+        this.HP -= ((AD * DF/100));
+        if (notificationIsEnabled) {
+            proxyNotification.notificationDieUnity(this);
+        }
     }
 
     public abstract BaseUnit clone();

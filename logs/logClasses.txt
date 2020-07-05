@@ -22,12 +22,12 @@ Name method: getCurrentUnits
 param: java.util.List<players.IUnitFactory> arg0
 return type: void
 ---------------------- 
-date: Sun Jul 05 02:25:48 MSK 2020
+date: Sun Jul 05 03:18:19 MSK 2020
 ---------------------- 
 -------------------------
 CLASS NAME: APPLICATION
 -------------------------
-date: Sun Jul 05 02:25:48 MSK 2020
+date: Sun Jul 05 03:18:19 MSK 2020
 ---------------------- 
 -------------------------
 CLASS NAME: MENU.MENU
@@ -44,7 +44,7 @@ Name method: printMenu
 params empty 
 return type: void
 ---------------------- 
-date: Sun Jul 05 02:25:48 MSK 2020
+date: Sun Jul 05 03:18:19 MSK 2020
 ---------------------- 
 -------------------------
 CLASS NAME: MENU.MENU
@@ -61,5 +61,5 @@ Name method: printMenu
 params empty 
 return type: void
 ---------------------- 
-date: Sun Jul 05 02:25:48 MSK 2020
+date: Sun Jul 05 03:18:19 MSK 2020
 ---------------------- 

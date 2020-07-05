@@ -1,5 +1,6 @@
 package army.strategies;
 
+import logger.MessageGame;
 import players.BaseUnit;
 
 import java.util.List;
@@ -10,9 +11,7 @@ public class WallToWallStrategy implements BattleTypeStrategy {
     public void createTypeBattle(List<BaseUnit> userArmy, List<BaseUnit> enemyArmy, BaseUnit currentUserUnit, BaseUnit currentEnemyUnit) {
 
         //attack to enemy
-        System.out.println("============================");
-        System.out.println("Начинает стенка пользователя: ");
-        System.out.println("============================");
+        MessageGame.setMessage("Начинает стенка пользователя: ");
         for (int i = 0; i < userArmy.size(); i++) {
             if (i <= enemyArmy.size() - 1) {
                 enemyArmy.get(i).takeDanger(userArmy.get(i).getAD());
@@ -22,9 +21,7 @@ public class WallToWallStrategy implements BattleTypeStrategy {
             }
         }
         //attack to user
-        System.out.println("============================");
-        System.out.println("Начинает стенка противника: ");
-        System.out.println("============================");
+        MessageGame.setMessage("Начинает стенка противника: ");
         for (int i = 0; i < enemyArmy.size(); i++) {
             if (i <= userArmy.size() - 1) {
                 userArmy.get(i).takeDanger(enemyArmy.get(i).getAD());

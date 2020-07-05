@@ -6,6 +6,7 @@ import army.strategies.OneOnOneStrategy;
 import army.strategies.ThreeByThreeStrategy;
 import army.strategies.WallToWallStrategy;
 import exceptions.NotCreatedArmyException;
+import logger.MessageGame;
 import menu.command.*;
 import players.BaseUnit;
 import players.ISpecialAction;
@@ -23,9 +24,6 @@ public class GameField implements IGame {
     private List<BaseUnit> enemyArmyImpl;
     private ContextBattleStrategy contextBattleStrategy;
 
-   // private InvokerCommand invokerCommandUserArmy;
-   // private InvokerCommand invokerCommandEnemyArmy;
-
     private Command undoCommandUserArmy;
     private Command redoCommandUserArmy;
     private Command undoCommandEnemyArmy;
@@ -33,6 +31,8 @@ public class GameField implements IGame {
 
     private ReceiverCommand receiverCommandUserArmy;
     private ReceiverCommand receiverCommandEnemyArmy;
+
+
 
     GameField() {
         logger.Logger.getLogger().writeClassInstanceLog(Menu.class);
@@ -53,7 +53,7 @@ public class GameField implements IGame {
     public List<BaseUnit> createArmy(IArmy army, int price) {
         if (armyImpl == null) {
             armyImpl = army.createArmy(price);
-            System.out.println("Army created");
+            MessageGame.setMessage("Army created");
             try {
                 enemyArmyImpl = army.createEnemyArmy(armyImpl);
                 System.out.println("Your army: ");
@@ -65,9 +65,13 @@ public class GameField implements IGame {
             }
         }
         else {
-            System.out.println("You already render army");
+            MessageGame.setMessage("You already render army");
         }
         return armyImpl;
+    }
+
+    public void setNotification(Boolean bool) {
+        BaseUnit.notificationIsEnabled = bool;
     }
 
     public void undoArmy() {
@@ -76,57 +80,53 @@ public class GameField implements IGame {
             receiverCommandEnemyArmy.pushRedoArmy(enemyArmyImpl);
             armyImpl = undoCommandUserArmy.execute();
             enemyArmyImpl = undoCommandEnemyArmy.execute();
-            System.out.println("===================");
             System.out.println("Ваши соратники: ");
             showArmyUser();
             System.out.println("Ваши противники: ");
             showEnemyArmy();
-            System.out.println("===================");
         } else {
-            System.out.println("army is empty");
+            MessageGame.setMessage("army is empty");
         }
     }
 
     public void redoArmy() {
             armyImpl = redoCommandUserArmy.execute();
             enemyArmyImpl = redoCommandEnemyArmy.execute();
-            System.out.println("===================");
             System.out.println("Ваши соратники: ");
             showArmyUser();
             System.out.println("Ваши противники: ");
             showEnemyArmy();
-            System.out.println("===================");
     }
 
     public boolean setOneOnOneStrategy() {
         if (armyImpl == null) {
-            System.out.println("You still not generate army");
+            MessageGame.setMessage("You still not generate army");
             return false;
         } else {
             contextBattleStrategy.setBattleTypeStrategy(new OneOnOneStrategy());
-            System.out.println("Strategy one on one activated");
+            MessageGame.setMessage("Strategy one on one activated");
             return true;
         }
     }
 
     public boolean setWallToWallStrategy() {
         if (armyImpl == null) {
-            System.out.println("You still not generate army");
+            MessageGame.setMessage("You still not generate army");
             return false;
         } else {
             contextBattleStrategy.setBattleTypeStrategy(new WallToWallStrategy());
-            System.out.println("Strategy wall to wall activated");
+            MessageGame.setMessage("Strategy wall to wall activated");
             return true;
         }
     }
 
     public boolean setThreeByThreeStrategy() {
         if (armyImpl == null) {
-            System.out.println("You still not generate army");
+            MessageGame.setMessage("You still not generate army");
             return false;
         } else {
             contextBattleStrategy.setBattleTypeStrategy(new ThreeByThreeStrategy());
-            System.out.println("Strategy three by three activated");
+            MessageGame.setMessage("Strategy three by three activated");
             return true;
         }
     }
@@ -146,31 +146,21 @@ public class GameField implements IGame {
 
                 if (userArmy.get(i) instanceof Wizard) {
                     ((ISpecialAction) userArmy.get(i)).doSpecialAction(userArmy);
-                    System.out.println("==================================");
-                    System.out.println("Ваши волшебники склонировали наших товарищей!");
-                    System.out.println("==================================");
+                    MessageGame.setMessage("Ваши волшебники склонировали наших товарищей!");
                 }
 
                 if (userArmy.get(i) instanceof Archer) {
                     ((ISpecialAction) userArmy.get(i)).doSpecialAction(enemyArmy);
-                    System.out.println("==================================");
-                    System.out.println("Ваши лучники воспользовались стрелами!");
-                    System.out.println("==================================");
-
+                    MessageGame.setMessage("Ваши лучники воспользовались стрелами!");
                 }
                 if (userArmy.get(i) instanceof Healer) {
                     ((ISpecialAction) userArmy.get(i)).doSpecialAction(userArmy);
-                    System.out.println("==================================");
-                    System.out.println("Ваши соратники излечились!");
-                    System.out.println("==================================");
-
+                    MessageGame.setMessage("Ваши соратники излечились!");
                 }
 
                 if (userArmy.get(i) instanceof Infantry) {
                     ((ISpecialAction) userArmy.get(i)).doSpecialAction(userArmy);
-                    System.out.println("==================================");
-                    System.out.println("Ваши соратники вооружились!");
-                    System.out.println("==================================");
+                    MessageGame.setMessage("Ваши соратники вооружились!");
 
                 }
 
@@ -183,34 +173,22 @@ public class GameField implements IGame {
 
                 if (enemyArmy.get(i) instanceof Wizard) {
                     ((ISpecialAction) enemyArmy.get(i)).doSpecialAction(enemyArmy);
-                    System.out.println("==================================");
-                    System.out.println("Противники склонировали своих бойцов!");
-                    System.out.println("==================================");
+                    MessageGame.setMessage("Противники склонировали своих бойцов!");
                 }
 
 
                 if (enemyArmy.get(i) instanceof Archer) {
                     ((Archer) enemyArmy.get(i)).doSpecialAction(userArmy);
-                    System.out.println("==================================");
-                    System.out.println("Противники воспользовались лучниками!");
-                    System.out.println("==================================");
-
-
+                    MessageGame.setMessage("Противники воспользовались лучниками!");
                 }
                 if (enemyArmy.get(i) instanceof Healer) {
                     ((Healer) enemyArmy.get(i)).doSpecialAction(enemyArmy);
-                    System.out.println("==================================");
-                    System.out.println("Противники излечились!");
-                    System.out.println("==================================");
-
+                    MessageGame.setMessage("Противники излечились!");
                 }
 
                 if (enemyArmy.get(i) instanceof Infantry) {
                     ((Infantry) enemyArmy.get(i)).doSpecialAction(enemyArmy);
-                    System.out.println("==================================");
-                    System.out.println("Противники вооружились!");
-                    System.out.println("==================================");
-
+                    MessageGame.setMessage("Противники вооружились!");
                 }
             }
         }
@@ -246,7 +224,7 @@ public class GameField implements IGame {
     public void showArmyUser() {
         String outArmyLog = "";
         if (armyImpl == null) {
-            System.out.println("You still not render army");
+            MessageGame.setMessage("You still not render army");
         } else {
             for (IUnit unit: armyImpl) {
                 outArmyLog += "[" + unit.toString() + "]\n";
@@ -259,7 +237,7 @@ public class GameField implements IGame {
     public void showEnemyArmy() {
         String outEnemyArmyLog = "";
         if (enemyArmyImpl == null) {
-            System.out.println("You still not render army");
+            MessageGame.setMessage("You still not render army");
         } else {
             for (IUnit unit: enemyArmyImpl) {
                 outEnemyArmyLog += "[" + unit.toString() + "] \n";
@@ -276,31 +254,27 @@ public class GameField implements IGame {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            System.out.println("===================");
             System.out.println("Ваши соратники: ");
             showArmyUser();
             System.out.println("Ваши противники: ");
             showEnemyArmy();
-            System.out.println("===================");
         }
-        if (userArmy.size() != 0) System.out.println("You win!");
-        if (enemyArmy.size() != 0) System.out.println("You lost");
+        if (userArmy.size() != 0) MessageGame.setMessage("You win!");
+        if (enemyArmy.size() != 0) MessageGame.setMessage("You lost");
 
     }
 
     @Override
     public boolean turn() {
         if (armyImpl == null) {
-            System.out.println("You still not render army");
+            MessageGame.setMessage("You still not render army");
             return false;
         } else {
             doTurn(armyImpl, enemyArmyImpl);
-            System.out.println("===================");
             System.out.println("Ваши соратники: ");
             showArmyUser();
             System.out.println("Ваши противники: ");
             showEnemyArmy();
-            System.out.println("===================");
 
             return true;
         }
@@ -309,10 +283,10 @@ public class GameField implements IGame {
     @Override
     public boolean turnToEnd() {
         if (armyImpl == null) {
-            System.out.println("You still not render army");
+            MessageGame.setMessage("You still not render army");
             return false;
         } else {
-            System.out.println("play to the end...");
+            MessageGame.setMessage("play to the end...");
             doTurnToEnd(armyImpl, enemyArmyImpl);
             return true;
         }

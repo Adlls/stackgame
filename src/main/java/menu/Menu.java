@@ -1,6 +1,7 @@
 package menu;
 
 import army.IArmy;
+import players.BaseUnit;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -57,21 +58,33 @@ public class Menu {
             case 5:
                 gameField.showEnemyArmy();
                 displayMenu(reader);
+                break;
             case 6:
                 gameField.setWallToWallStrategy();
                 displayMenu(reader);
+                break;
             case 7:
                 gameField.setOneOnOneStrategy();
                 displayMenu(reader);
+                break;
             case 8:
-                 gameField.undoArmy();
-                 displayMenu(reader);
-            case 9:
-                gameField.redoArmy();
-                displayMenu(reader);
-            case 10:
                 gameField.setThreeByThreeStrategy();
                 displayMenu(reader);
+            case 9:
+                 gameField.undoArmy();
+                 displayMenu(reader);
+                 break;
+            case 10:
+                gameField.redoArmy();
+                displayMenu(reader);
+                break;
+            case 11:
+                if (BaseUnit.notificationIsEnabled)
+                    gameField.setNotification(false);
+                else
+                    gameField.setNotification(true);
+                displayMenu(reader);
+                break;
             default:
                 System.out.println("Incorrect point menu. Please try again.");
                 displayMenu(reader);
@@ -79,17 +92,24 @@ public class Menu {
     }
 
     private void printMenu() {
-        System.out.println("0. Exit");
-        System.out.println("1. Create army");
-        System.out.println("2. Turn");
-        System.out.println("3. Turn to end");
-        System.out.println("4. Show my army");
-        System.out.println("5. Show enemy army");
-        System.out.println("6. Wall on wall strategy");
-        System.out.println("7. One on one strategy (default)");
-        System.out.println("8. Undo");
-        System.out.println("9. Redo");
-        System.out.println("10. Three by three strategy");
+        System.out.println("0.  Exit");
+        System.out.println("1.  Create army");
+        System.out.println("2.  Turn");
+        System.out.println("3.  Turn to end");
+        System.out.println("4.  Show my army");
+        System.out.println("5.  Show enemy army");
+        System.out.println("6.  Wall on wall strategy");
+        System.out.println("7.  One on one strategy (default)");
+        System.out.println("8.  Three by three strategy");
+        System.out.println("9.  Undo");
+        System.out.println("10. Redo");
+        if (BaseUnit.notificationIsEnabled) {
+            System.out.println("11. Disable notification");
+        } else {
+            System.out.println("11. Enable notification");
+
+        }
+        System.out.println(" ");
     }
 
 }
