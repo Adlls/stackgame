@@ -12,9 +12,10 @@ public class OneOnOneStrategy implements BattleTypeStrategy {
 
         MessageGame.setMessage("user unit: " + currentUserUnit.toString() + " vs enemy unit: " + currentEnemyUnit.toString());
 
-        MessageGame.setMessage("Делает ход user unit: " +  currentUserUnit.toString());
-        currentEnemyUnit.takeDanger(currentUserUnit.getAD());
-
+        if (currentUserUnit.getHP() >= 0) {
+            MessageGame.setMessage("Делает ход user unit: " + currentUserUnit.toString());
+            currentEnemyUnit.takeDanger(currentUserUnit.getAD());
+        }
         if (currentEnemyUnit.getHP() > 0) {
             MessageGame.setMessage("Делает ход enemy unit: " + currentEnemyUnit.toString());
             currentUserUnit.takeDanger(currentEnemyUnit.getAD());

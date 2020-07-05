@@ -10,15 +10,17 @@
       <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/javaCompile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/army/strategies/OneOnOneStrategy.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/army/strategies/OneOnOneStrategy.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/army/strategies/ThreeByThreeStrategy.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/army/strategies/ThreeByThreeStrategy.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/army/strategies/WallToWallStrategy.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/army/strategies/WallToWallStrategy.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/menu/GameField.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/menu/GameField.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/players/BaseUnit.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/players/BaseUnit.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/players/impl/Wizard.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/players/impl/Wizard.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/user/BaseUser.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/user/BaseUser.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/menu/Menu.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/menu/Menu.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/logClasses.txt" beforeDir="false" afterPath="$PROJECT_DIR$/logs/logClasses.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/army/strategies/OneOnOneStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/army/strategies/OneOnOneStrategy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/army/strategies/ThreeByThreeStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/army/strategies/ThreeByThreeStrategy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/army/strategies/WallToWallStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/army/strategies/WallToWallStrategy.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/menu/GameField.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/menu/GameField.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/players/BaseUnit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/players/BaseUnit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/players/impl/Wizard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/players/impl/Wizard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/user/BaseUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/user/BaseUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/menu/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/menu/Menu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/user/dataUser" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/user/dataUser" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -103,7 +105,7 @@
       <workItem from="1590267144468" duration="30518000" />
       <workItem from="1593556014072" duration="194000" />
       <workItem from="1593556354460" duration="41517000" />
-      <workItem from="1593737653689" duration="60434000" />
+      <workItem from="1593737653689" duration="63126000" />
     </task>
     <servers />
   </component>
@@ -157,28 +159,28 @@
       <screen x="0" y="23" width="1280" height="730" />
     </state>
     <state x="378" y="138" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog/0.23.1280.730@0.23.1280.730" timestamp="1591126567186" />
-    <state width="1238" height="116" key="GridCell.Tab.0.bottom" timestamp="1593952050018">
+    <state width="1238" height="521" key="GridCell.Tab.0.bottom" timestamp="1593958275782">
       <screen x="0" y="23" width="1280" height="730" />
     </state>
-    <state width="1238" height="116" key="GridCell.Tab.0.bottom/0.23.1280.730@0.23.1280.730" timestamp="1593952050018" />
+    <state width="1238" height="521" key="GridCell.Tab.0.bottom/0.23.1280.730@0.23.1280.730" timestamp="1593958275782" />
     <state width="1238" height="179" key="GridCell.Tab.0.bottom/0.23.1280.732@0.23.1280.732" timestamp="1591124518833" />
     <state width="1238" height="183" key="GridCell.Tab.0.bottom/0.23.1280.734@0.23.1280.734" timestamp="1590269444862" />
-    <state width="1238" height="116" key="GridCell.Tab.0.center" timestamp="1593952050016">
+    <state width="1238" height="521" key="GridCell.Tab.0.center" timestamp="1593958275782">
       <screen x="0" y="23" width="1280" height="730" />
     </state>
-    <state width="1238" height="116" key="GridCell.Tab.0.center/0.23.1280.730@0.23.1280.730" timestamp="1593952050016" />
+    <state width="1238" height="521" key="GridCell.Tab.0.center/0.23.1280.730@0.23.1280.730" timestamp="1593958275782" />
     <state width="1238" height="179" key="GridCell.Tab.0.center/0.23.1280.732@0.23.1280.732" timestamp="1591124518832" />
     <state width="1238" height="183" key="GridCell.Tab.0.center/0.23.1280.734@0.23.1280.734" timestamp="1590269444860" />
-    <state width="1238" height="116" key="GridCell.Tab.0.left" timestamp="1593952050016">
+    <state width="1238" height="521" key="GridCell.Tab.0.left" timestamp="1593958275781">
       <screen x="0" y="23" width="1280" height="730" />
     </state>
-    <state width="1238" height="116" key="GridCell.Tab.0.left/0.23.1280.730@0.23.1280.730" timestamp="1593952050016" />
+    <state width="1238" height="521" key="GridCell.Tab.0.left/0.23.1280.730@0.23.1280.730" timestamp="1593958275781" />
     <state width="1238" height="179" key="GridCell.Tab.0.left/0.23.1280.732@0.23.1280.732" timestamp="1591124518832" />
     <state width="1238" height="183" key="GridCell.Tab.0.left/0.23.1280.734@0.23.1280.734" timestamp="1590269444860" />
-    <state width="1238" height="116" key="GridCell.Tab.0.right" timestamp="1593952050017">
+    <state width="1238" height="521" key="GridCell.Tab.0.right" timestamp="1593958275782">
       <screen x="0" y="23" width="1280" height="730" />
     </state>
-    <state width="1238" height="116" key="GridCell.Tab.0.right/0.23.1280.730@0.23.1280.730" timestamp="1593952050017" />
+    <state width="1238" height="521" key="GridCell.Tab.0.right/0.23.1280.730@0.23.1280.730" timestamp="1593958275782" />
     <state width="1238" height="179" key="GridCell.Tab.0.right/0.23.1280.732@0.23.1280.732" timestamp="1591124518833" />
     <state width="1238" height="183" key="GridCell.Tab.0.right/0.23.1280.734@0.23.1280.734" timestamp="1590269444861" />
     <state width="1238" height="165" key="GridCell.Tab.1.bottom" timestamp="1593784464357">

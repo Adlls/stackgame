@@ -56,7 +56,7 @@ public class Menu {
                 if (coins > user.getCoins()) {
                     System.out.println("У вас не хватает коинсов");
                 } else {
-                    gameField.createArmy(army, user.getCoins());
+                    gameField.createArmy(army, coins);
                     user.setCoins(user.getCoins() - coins);
                 }
                 displayMenu(reader);

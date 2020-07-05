@@ -2,13 +2,9 @@ RUN GAME
 -------------------------
 CLASS NAME: ARMY.ARMY
 -------------------------
-Name method: scanPathFactoriesForCurrentUnits
-param: java.util.List<players.IUnitFactory> arg0
+Name method: createArmy
+param: int arg0
 return type: interface java.util.List
----------------------- 
-Name method: getCurrentUnits
-param: java.util.List<players.IUnitFactory> arg0
-return type: void
 ---------------------- 
 Name method: getMinPrice
 params empty 
@@ -18,26 +14,30 @@ Name method: createEnemyArmy
 param: java.util.List<players.BaseUnit> arg0
 return type: interface java.util.List
 ---------------------- 
-Name method: createArmy
-param: int arg0
+Name method: scanPathFactoriesForCurrentUnits
+param: java.util.List<players.IUnitFactory> arg0
 return type: interface java.util.List
 ---------------------- 
-date: Sun Jul 05 15:27:30 MSK 2020
+Name method: getCurrentUnits
+param: java.util.List<players.IUnitFactory> arg0
+return type: void
+---------------------- 
+date: Sun Jul 05 17:11:16 MSK 2020
 ---------------------- 
 -------------------------
 CLASS NAME: APPLICATION
 -------------------------
-date: Sun Jul 05 15:27:30 MSK 2020
+date: Sun Jul 05 17:11:16 MSK 2020
 ---------------------- 
 -------------------------
 CLASS NAME: MENU.MENU
 -------------------------
-Name method: infoUser
-params empty 
-return type: void
----------------------- 
 Name method: displayMenu
 param: java.io.BufferedReader arg0
+return type: void
+---------------------- 
+Name method: infoUser
+params empty 
 return type: void
 ---------------------- 
 Name method: choosePointMenu
@@ -48,17 +48,17 @@ Name method: printMenu
 params empty 
 return type: void
 ---------------------- 
-date: Sun Jul 05 15:27:30 MSK 2020
+date: Sun Jul 05 17:11:16 MSK 2020
 ---------------------- 
 -------------------------
 CLASS NAME: MENU.MENU
 -------------------------
-Name method: infoUser
-params empty 
-return type: void
----------------------- 
 Name method: displayMenu
 param: java.io.BufferedReader arg0
+return type: void
+---------------------- 
+Name method: infoUser
+params empty 
 return type: void
 ---------------------- 
 Name method: choosePointMenu
@@ -69,5 +69,5 @@ Name method: printMenu
 params empty 
 return type: void
 ---------------------- 
-date: Sun Jul 05 15:27:30 MSK 2020
+date: Sun Jul 05 17:11:16 MSK 2020
 ---------------------- 

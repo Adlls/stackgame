@@ -254,15 +254,15 @@ public class GameField implements IGame {
     public void doTurnToEnd(List<BaseUnit> userArmy, List<BaseUnit> enemyArmy) {
         while (userArmy.size() != 0 && enemyArmy.size() != 0) {
             doTurn(userArmy, enemyArmy);
+            System.out.println("Ваши соратники: ");
+            showArmyUser();
+            System.out.println("Ваши противники: ");
+            showEnemyArmy();
             try {
                 Thread.sleep(2000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            System.out.println("Ваши соратники: ");
-            showArmyUser();
-            System.out.println("Ваши противники: ");
-            showEnemyArmy();
         }
         if (userArmy.size() != 0)  {
             MessageGame.setMessage("You win!");
