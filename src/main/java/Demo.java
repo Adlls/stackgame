@@ -3,6 +3,8 @@ import army.IArmy;
 import exceptions.NotEnoughCoinsException;
 import logger.Logger;
 import players.IUnit;
+import user.BaseUser;
+import user.User;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -12,13 +14,10 @@ import java.lang.reflect.InvocationTargetException;
 public class Demo {
 
     private static Application configureApplication() throws IllegalAccessException, InvocationTargetException, InstantiationException, IOException, NoSuchMethodException, ClassNotFoundException, NotEnoughCoinsException {
-        System.out.println("Сколько у вас монеток?");
-        BufferedReader  reader = new BufferedReader(new InputStreamReader(System.in));
-        int coinsReader = Integer.parseInt(reader.readLine().trim());
         Application app;
-        IArmy army;
-        army = new Army();
-        app = new Application(army, coinsReader);
+        BaseUser user = new User();
+        IArmy army = new Army();
+        app = new Application(army, user);
         return app;
     }
 

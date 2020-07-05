@@ -15,7 +15,10 @@ import players.impl.Archer;
 import players.impl.Healer;
 import players.impl.Infantry;
 import players.impl.Wizard;
+import user.BaseUser;
+import user.User;
 
+import java.io.IOException;
 import java.util.List;
 
 public class GameField implements IGame {
@@ -23,6 +26,7 @@ public class GameField implements IGame {
     private List<BaseUnit> armyImpl;
     private List<BaseUnit> enemyArmyImpl;
     private ContextBattleStrategy contextBattleStrategy;
+    private BaseUser user;
 
     private Command undoCommandUserArmy;
     private Command redoCommandUserArmy;
@@ -34,11 +38,12 @@ public class GameField implements IGame {
 
 
 
-    GameField() {
+    GameField(BaseUser user) {
         logger.Logger.getLogger().writeClassInstanceLog(Menu.class);
+        this.user = user;
+
         contextBattleStrategy = new ContextBattleStrategy();
         contextBattleStrategy.setBattleTypeStrategy(new OneOnOneStrategy());
-
         receiverCommandUserArmy = new ReceiverCommand();
         receiverCommandEnemyArmy = new ReceiverCommand();
 
@@ -259,7 +264,11 @@ public class GameField implements IGame {
             System.out.println("Ваши противники: ");
             showEnemyArmy();
         }
-        if (userArmy.size() != 0) MessageGame.setMessage("You win!");
+        if (userArmy.size() != 0)  {
+            MessageGame.setMessage("You win!");
+            user.setCoins(user.getCoins() + 500);
+            user.setProgressLevel(user.getProgressLevel() + 50);
+        }
         if (enemyArmy.size() != 0) MessageGame.setMessage("You lost");
 
     }

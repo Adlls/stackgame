@@ -6,12 +6,12 @@ Name method: getMinPrice
 params empty 
 return type: int
 ---------------------- 
-Name method: createEnemyArmy
-param: java.util.List<players.BaseUnit> arg0
-return type: interface java.util.List
----------------------- 
 Name method: createArmy
 param: int arg0
+return type: interface java.util.List
+---------------------- 
+Name method: createEnemyArmy
+param: java.util.List<players.BaseUnit> arg0
 return type: interface java.util.List
 ---------------------- 
 Name method: scanPathFactoriesForCurrentUnits
@@ -22,16 +22,20 @@ Name method: getCurrentUnits
 param: java.util.List<players.IUnitFactory> arg0
 return type: void
 ---------------------- 
-date: Sun Jul 05 03:18:19 MSK 2020
+date: Sun Jul 05 04:46:54 MSK 2020
 ---------------------- 
 -------------------------
 CLASS NAME: APPLICATION
 -------------------------
-date: Sun Jul 05 03:18:19 MSK 2020
+date: Sun Jul 05 04:46:54 MSK 2020
 ---------------------- 
 -------------------------
 CLASS NAME: MENU.MENU
 -------------------------
+Name method: infoUser
+params empty 
+return type: void
+---------------------- 
 Name method: displayMenu
 param: java.io.BufferedReader arg0
 return type: void
@@ -44,11 +48,15 @@ Name method: printMenu
 params empty 
 return type: void
 ---------------------- 
-date: Sun Jul 05 03:18:19 MSK 2020
+date: Sun Jul 05 04:46:54 MSK 2020
 ---------------------- 
 -------------------------
 CLASS NAME: MENU.MENU
 -------------------------
+Name method: infoUser
+params empty 
+return type: void
+---------------------- 
 Name method: displayMenu
 param: java.io.BufferedReader arg0
 return type: void
@@ -61,5 +69,5 @@ Name method: printMenu
 params empty 
 return type: void
 ---------------------- 
-date: Sun Jul 05 03:18:19 MSK 2020
+date: Sun Jul 05 04:46:54 MSK 2020
 ---------------------- 

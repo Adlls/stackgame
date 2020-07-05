@@ -2,6 +2,7 @@ package menu;
 
 import army.IArmy;
 import players.BaseUnit;
+import user.BaseUser;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -11,19 +12,27 @@ public class Menu {
 
     private BufferedReader reader;
     private IArmy army;
-    private int coins;
     private GameField gameField;
+    private BaseUser user;
 
-    public Menu(IArmy army, int coins) {
+    public Menu(IArmy army, BaseUser user) {
         logger.Logger.getLogger().writeClassInstanceLog(Menu.class);
         this.army  = army;
-        this.coins = coins;
-        this.gameField = new GameField();
+        this.user = user;
+        this.gameField = new GameField(user);
         reader = new BufferedReader(new InputStreamReader(System.in));
         displayMenu(reader);
     }
 
+    private void infoUser() {
+        System.out.print("lvl: " + user.getLevel());
+        System.out.print(" Progress: "+ user.getProgressLevel() + "/100");
+        System.out.println(" coins: "+ user.getCoins());
+        System.out.println("");
+    }
+
     private void displayMenu(BufferedReader reader) {
+        infoUser();
         printMenu();
         System.out.println("Please input point menu >> ");
         try {
@@ -41,7 +50,7 @@ public class Menu {
                 System.exit(0);
                 break;
             case 1:
-                gameField.createArmy(army, coins);
+                gameField.createArmy(army, user.getCoins());
                 displayMenu(reader);
                 break;
             case 2:
