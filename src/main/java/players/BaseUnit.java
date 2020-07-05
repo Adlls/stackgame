@@ -14,7 +14,9 @@ public abstract class BaseUnit implements IUnit {
     protected double DF;
     protected int price;
     protected static int COST;
+    protected boolean isCloned;
     public static boolean notificationIsEnabled;
+
 
     protected List<String> wears = new ArrayList<>();
 
@@ -28,6 +30,13 @@ public abstract class BaseUnit implements IUnit {
     }
 
 
+    public void setCloned(boolean bool) {
+        this.isCloned = bool;
+    }
+
+    public boolean isCloned() {
+        return this.isCloned;
+    }
 
     @Override
     public String toString() {
@@ -99,7 +108,8 @@ public abstract class BaseUnit implements IUnit {
             }
         }
 
-        this.HP -= ((AD * DF/100));
+        this.HP -= ((AD * DF/100 + 20));
+
         if (notificationIsEnabled) {
             proxyNotification.notificationDieUnity(this);
         }

@@ -82,7 +82,7 @@ public abstract class BaseUser implements IUser {
     @Override
     public void setCoins(int coins) {
         if (this.coins < 500) {
-            this.coins = 500;
+            this.coins = 500 + coins;
         } else {
             this.coins = coins;
         }

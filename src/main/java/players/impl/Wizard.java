@@ -39,26 +39,30 @@ public class Wizard extends BaseUnit implements ISpecialAction {
     }
 
 
+    private void cloneUnit(BaseUnit unit, List<BaseUnit> army) {
+        if (!unit.isCloned()) {
+            army.add(unit.clone());
+            unit.setCloned(true);
+        }
+    }
+
 
     @Override
     public void doSpecialAction(List<BaseUnit> unitsArmy) {
         for (int i = 0; i < unitsArmy.size(); i++) {
             if (unitsArmy.get(i).equals(this)) {
                 if ((i + 1 <= unitsArmy.size() - 1)) {
-                    if (unitsArmy.get(i + 1) instanceof Knight) {
-                           unitsArmy.add(((Knight) unitsArmy.get(i + 1)).clone());
-
-                    } else if (unitsArmy.get(i + 1) instanceof Archer) {
-                           unitsArmy.add(((Archer) unitsArmy.get(i + 1)).clone());
+                    if (unitsArmy.get(i + 1) instanceof Knight
+                            || unitsArmy.get(i + 1) instanceof Archer) {
+                        cloneUnit(unitsArmy.get(i + 1), unitsArmy);
                     }
                 } else if (i - 1 >= 0) {
-                    if (unitsArmy.get(i - 1) instanceof Knight) {
-                           unitsArmy.add(((Knight) unitsArmy.get(i - 1)).clone());
-                    } else if (unitsArmy.get(i - 1) instanceof Archer) {
-                           unitsArmy.add(((Archer) unitsArmy.get(i - 1)).clone());
+                    if (unitsArmy.get(i - 1) instanceof Knight
+                            || unitsArmy.get(i - 1) instanceof Archer) {
+                        cloneUnit(unitsArmy.get(i - 1), unitsArmy);
                     }
+                    break;
                 }
-                break;
             }
         }
     }

@@ -266,8 +266,8 @@ public class GameField implements IGame {
         }
         if (userArmy.size() != 0)  {
             MessageGame.setMessage("You win!");
-            user.setCoins(user.getCoins() + 500);
-            user.setProgressLevel(user.getProgressLevel() + 50);
+            user.setCoins(user.getCoins() + 500 * userArmy.size());
+            user.setProgressLevel(user.getProgressLevel() + 50 * (userArmy.size()/2)/userArmy.size());
         }
         if (enemyArmy.size() != 0) MessageGame.setMessage("You lost");
 
